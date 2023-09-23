@@ -32,8 +32,7 @@ namespace CEM
                 ucRegister.Instance.BringToFront();
             }
             ucRegister.Instance.BringToFront();
-           /* Company_Registration company_Registration = new Company_Registration();
-            company_Registration.Show();*/
+          
         }
 
         private void accordionControlElement1_Click(object sender, EventArgs e)
@@ -43,13 +42,15 @@ namespace CEM
 
         private void aceDetails_Click(object sender, EventArgs e)
         {
-            if (!container.Controls.Contains(ucDetails.Instance))
-            {
-                container.Controls.Add(ucDetails.Instance);
-                ucDetails.Instance.Dock = DockStyle.Fill;
-                ucDetails.Instance.BringToFront();
-            }
-            ucDetails.Instance.BringToFront();
+            /* if (!container.Controls.Contains(ucDetails.Instance))
+             {
+                 container.Controls.Add(ucDetails.Instance);
+                 ucDetails.Instance.Dock = DockStyle.Fill;
+                 ucDetails.Instance.BringToFront();
+             }
+             ucDetails.Instance.BringToFront();*/
+            frmMain2 frm = new frmMain2();
+            frm.Show();
         }
 
         private void container_Click(object sender, EventArgs e)

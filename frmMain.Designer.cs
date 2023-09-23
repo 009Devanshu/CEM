@@ -66,14 +66,14 @@ namespace CEM
             // 
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionControlElement2.Text = "Registration";
+            this.accordionControlElement2.Text = "Company";
             this.accordionControlElement2.Click += new System.EventHandler(this.accordionControlElement2_Click);
             // 
             // aceDetails
             // 
             this.aceDetails.Name = "aceDetails";
             this.aceDetails.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.aceDetails.Text = "Details";
+            this.aceDetails.Text = "Clients";
             this.aceDetails.Click += new System.EventHandler(this.aceDetails_Click);
             // 
             // container
