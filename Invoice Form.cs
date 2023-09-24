@@ -39,6 +39,7 @@ namespace CEM
         string client_company;
         string client_address;
         string client_gst;
+        string initial_gst_number;
         string client_country;
         double IGST;
         double CGST;
@@ -105,17 +106,17 @@ namespace CEM
                         {
                             // Assuming YourColumnName is of type string
                             string columnValue = reader["name"].ToString();
-                            comboBoxBank.Items.Add(columnValue);
+                            comboBoxCompany.Items.Add(columnValue);
                         }
                     }
                 }
             }
-            comboBoxBank.SelectedIndex = 0;
+            comboBoxCompany.SelectedIndex = 0;
             comboBank.SelectedIndex = 0;
             comboCurrency.SelectedIndex = 0;
             comboEmail.SelectedIndex = 0;
 
-            rbtninterstate.Checked = true;
+           
 
             txtamount.Text = "0";
             txtitemname.Text = "Software Developer";
@@ -127,11 +128,31 @@ namespace CEM
             txtcompany.Text =  ((frmMain2)f).company_name;
             txtaddress.Text=((frmMain2)f).address;
             load_invoice_number = ((frmMain2)f).Invoice_Number;
+            client_gst = ((frmMain2)f).gst;
+            client_country = ((frmMain2)f).country;
+            txtClientCountry.Text = client_country;
+            
+            
+            initial_gst_number = client_gst.Substring(0, 2);
+            
 
+            if (initial_gst_number == "09")
+            {
+                rbtnwithinstate.Checked = true;
+            }
+            else if(initial_gst_number!="09" && client_country != "India")
+            {
+                rbtnigstforeign.Checked = true;    
+            }
+            else
+            {
+                rbtninterstate.Checked = true;
+            }
+            txtgst.Text = client_gst;
             //txtcountry.Text  = ((frmMain2)f).country;
             txtinvoicenumber.Text= (int.Parse(load_invoice_number) + 1).ToString();
 
-
+           
             //Inserting Data into fields
             client_name = txtclient.Text;
             client_company=txtcompany.Text;
@@ -139,7 +160,8 @@ namespace CEM
             //client_country=txtcountry.Text;
 
             client_gst = ((frmMain2)f).gst;
-            
+
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
 
         }
 
@@ -216,38 +238,84 @@ namespace CEM
             }
 
 
-
            
 
            
 
-            string CompanyName="";
-            
+            string YourCompanyName=comboBoxCompany.Text;
 
-            string CompanyGST = "HJH7777";
-            string LUT = "7877IOI";
-            string CIN = "00009uii";
-            string InvoiceNumber = "FY23-24/22";
-            string InvoiceDate = "July 21, 2023";
-            string TotalAmount = "$ 20000";
-            string ClientName = "XYZ";
-            string ClientCompanay = "Infosys";
-            string ClientAddress = "Pune";
-            string ClientGST = "JKUIO909";
-            string ItemName = "Software Developer";
-            string ItemDescription = "A good programmer in Java and JavaScript";
-            string rupeeSymbol = "\u20B9";
-            string Subtotoal = "₹20,000";
-            string CGST = "₹30,000";
-            string SGST = "₹40,000";
-            string IGST = "₹50,000";
-            string AccountName = "ATF Labs Pvt Ltd";
+            using (SqlConnection connection = new SqlConnection(path))
+            {
+                connection.Open();
+
+                string query = "select gst,lut,cin from company where name='"+YourCompanyName+"'" ;
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Assuming YourColumnName is of type string
+                            your_gst = reader["gst"].ToString();
+                            your_lut = reader["lut"].ToString();
+                            your_cin = reader["cin"].ToString();
+                        }
+                    }
+                }
+
+
+            }
+
+
+            string CompanyGST = "";
+            string LUT = "";
+            string CIN = "";
+           
+            DateTime InvoiceDate = DateTime.Parse(dateTimePicker1.Text);
+            string TotalAmount = "";
+            string ClientName = txtclient.Text;
+            string ClientCompanay = txtcompany.Text;
+            string ClientAddress = txtaddress.Text;
+            string ClientCountry = txtClientCountry.Text;
+           
+            string ItemName = "";
+            string ItemDescription = "";
+            string rupeeSymbol = "";
+            double Subtotoal = double.Parse(txtenteramount.Text);
+
+            double CGST= (Subtotoal * 9) / 100;
+            double SGST = (Subtotoal * 9) / 100;
+            double IGST = (Subtotoal * 18) / 100;
+            double total = 0;
+            if (rbtnwithinstate.Checked == true)
+            {
+                total = Subtotoal + SGST + CGST;
+            }
+            else if (rbtninterstate.Checked == true)
+            {
+                total = Subtotoal + IGST;
+            }
+            else if (rbtnigstforeign.Checked == true)
+            {
+                total = Subtotoal + IGST;
+            }
+            string AccountName = "";
             string AccountNumber = "5063700002797";
             string IFSC = "YESB0000050";
             string SWIFT = "YESBINBBXXX";
             string BankName = "Yes Bank Ltd";
             string BankAddress = "Sanjay Place, Agra";
 
+
+
+            //Changing format of DateTime(DateOfJoining)
+            string originalDate = InvoiceDate.ToString(); // Assuming DateOfJoining is a DateTime object
+            DateTime dt = DateTime.ParseExact(originalDate, "dd-MMM-yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            string reformattedDate = dt.ToString("MMM dd, yyyy", CultureInfo.InvariantCulture);
+            
+            
+            
             //Creating pdf with iText7 library
             string client_name =  txtclient.Text;
 
@@ -278,6 +346,11 @@ namespace CEM
             icon.SetWidth(12);
             //icon.SetFixedPosition(37, 615);
 
+            string RupeesPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "rupee.png");
+            iText.Layout.Element.Image RupeeIcon = new iText.Layout.Element.Image(ImageDataFactory.Create(RupeesPath));
+            RupeeIcon.SetHeight(9);
+            RupeeIcon.SetWidth(12);
+
             string BankIconPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "bank.png");
             iText.Layout.Element.Image BankIcon = new iText.Layout.Element.Image(ImageDataFactory.Create(BankIconPath));
             BankIcon.SetHeight(20);
@@ -286,8 +359,43 @@ namespace CEM
 
             PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
             PdfFont boldFont2 = PdfFontFactory.CreateFont(StandardFonts.COURIER);
+
             string fontPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "IndianRupee.ttf");
             PdfFont customFont = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
+
+            /* string Total = "1000"; // Replace with your actual subtotal value
+            string rSymbol = "\u20B9";
+            Paragraph rupeeParagraph = new Paragraph().Add(new Text(rSymbol).SetFont(customFont)).Add(" " + Total).SetTextAlignment(TextAlignment.LEFT);*/
+
+            Paragraph TotalParagraph=null;
+            Paragraph SubtotalParagraph = null;
+            Paragraph CGSTParagraph = null;
+            Paragraph SGSTParagraph = null;
+            Paragraph IGSTParagraph = null; 
+            if (comboCurrency.SelectedIndex == 0)
+            {
+                TotalParagraph = new Paragraph().Add(new Text("\u20B9").SetFont(customFont)).Add(" " + total).SetTextAlignment(TextAlignment.LEFT);
+                SubtotalParagraph = new Paragraph().Add(new Text("\u20B9").SetFont(customFont)).Add(" " + Subtotoal).SetTextAlignment(TextAlignment.LEFT);
+                CGSTParagraph = new Paragraph().Add(new Text("\u20B9").SetFont(customFont)).Add(" " + CGST).SetTextAlignment(TextAlignment.LEFT);
+                SGSTParagraph = new Paragraph().Add(new Text("\u20B9").SetFont(customFont)).Add(" " + SGST).SetTextAlignment(TextAlignment.LEFT);
+                IGSTParagraph = new Paragraph().Add(new Text("\u20B9").SetFont(customFont)).Add(" " + IGST).SetTextAlignment(TextAlignment.LEFT);
+            }
+            if (comboCurrency.SelectedIndex == 1)
+            {
+                TotalParagraph = new Paragraph().Add(new Text("$")).Add(" " + total).SetTextAlignment(TextAlignment.LEFT);
+                SubtotalParagraph = new Paragraph().Add(new Text("$")).Add(" " + Subtotoal).SetTextAlignment(TextAlignment.LEFT);
+                CGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + CGST).SetTextAlignment(TextAlignment.LEFT);
+                SGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + SGST).SetTextAlignment(TextAlignment.LEFT);
+                IGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + IGST).SetTextAlignment(TextAlignment.LEFT);
+            }
+
+          
+
+           
+
+           
+ 
+
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -349,7 +457,7 @@ namespace CEM
                         .SetMarginTop(14);
                     Cell cell21 = new Cell(1,2)
                         .SetBorder(Border.NO_BORDER)
-                        .Add(new Paragraph().SetFontSize(14).Add("ATF LABS PVT LTD"))
+                        .Add(new Paragraph().SetFontSize(14).Add(YourCompanyName))
                         .Add(new Paragraph().SetFontSize(9).Add("Hari Parwat Crossing, Agra - UP, India").SetStrokeWidth(10f).SetStrokeColor(ColorConstants.BLUE));
                     table2.AddCell(cell21);
 
@@ -363,9 +471,9 @@ namespace CEM
                     //.SetMarginTop(3);
                     Cell cell31 = new Cell(1, 2)
                         .SetBorder(Border.NO_BORDER)
-                    .Add(new Paragraph().SetFontSize(8).Add("GST: " + CompanyGST))
-                    .Add(new Paragraph().SetFontSize(8).Add("LUT: " + LUT))
-                    .Add(new Paragraph().SetFontSize(8).Add("CIN:  " + CIN));
+                    .Add(new Paragraph().SetFontSize(8).Add("GST: " + your_gst))
+                    .Add(new Paragraph().SetFontSize(8).Add("LUT: " + your_lut))
+                    .Add(new Paragraph().SetFontSize(8).Add("CIN:  " + your_cin));
 
                     Cell cell32 = new Cell(1, 1)
                        
@@ -384,14 +492,14 @@ namespace CEM
 
                     iText.Kernel.Colors.Color customColor = new DeviceRgb(222, 238, 237);
 
-                    float col41 = 300f;
-                    float col42 = 300f;
+                    float col41 = 495f;
+                    float col42 = 100f;
                     float[] colwidth4 = { col41, col42 };
                     Table table4 = new Table(colwidth4)
 
                          .SetWidth(595)
                          .SetMarginTop(20)
-                        .SetHeight(55)
+                        .SetHeight(60)
                         .SetFontSize(8)
                         .SetBackgroundColor(customColor);
 
@@ -400,19 +508,20 @@ namespace CEM
                         .SetPaddingLeft(25)
                         .SetPaddingTop(15)
                         .SetFontSize(9)
-                        .Add(new Paragraph("Invoice No: "+InvoiceNumber).SetFont(boldFont))
-                        .Add(new Paragraph("Invoice Date: "+InvoiceDate).SetFont(boldFont));
+                        .Add(new Paragraph("Invoice No: "+"FY23-24/"+txtinvoicenumber.Text).SetFont(boldFont))
+                        .Add(new Paragraph("Invoice Date: "+ reformattedDate).SetFont(boldFont));
                     Cell cell42 = new Cell(1,1)
 
                        
                        
                         .SetBorder(Border.NO_BORDER)
-                        .SetPaddingTop(15)
-                        .SetFontSize(10)
-                        .SetTextAlignment(TextAlignment.RIGHT)
-                        .SetPaddingRight(25)
-                        .Add(new Paragraph().Add(TotalAmount).SetFontSize(11).SetPaddingRight(25).SetFont(boldFont))
-                        .Add(new Paragraph().Add("AMOUNT").SetFontSize(13).SetPaddingRight(15).SetFont(boldFont));
+                        .SetPaddingTop(9)
+                      
+                        .SetTextAlignment(TextAlignment.LEFT)
+                      
+                      
+                        .Add(new Paragraph().Add("AMOUNT").SetFontSize(12).SetFont(boldFont))
+                          .Add(new Paragraph().Add(TotalParagraph).SetFontSize(11).SetFont(boldFont));
                     table4.AddCell(cell41);
                     table4.AddCell(cell42);
 
@@ -429,8 +538,8 @@ namespace CEM
                         .Add(new Paragraph().Add("BILL TO:"))
                         .Add(new Paragraph().Add(ClientName).SetFontSize(9).SetPaddingTop(6))
                         .Add(new Paragraph().Add(ClientName).SetFontSize(9))
-                        .Add(new Paragraph().Add(ClientAddress).SetFontSize(9))
-                        .Add(new Paragraph().Add("GST: "+ClientGST).SetFontSize(9));
+                        .Add(new Paragraph().Add(ClientAddress+", "+ClientCountry).SetFontSize(9))
+                        .Add(new Paragraph().Add("GST: "+client_gst).SetFontSize(9));
                     table5.AddCell(cell51);
 
                     float col61 = 300f;
@@ -458,17 +567,19 @@ namespace CEM
 
                         .SetBorder(Border.NO_BORDER)
                         .SetPaddingTop(7)
-                        .SetFontSize(10)
+                        .SetFontSize(9)
                         .SetTextAlignment(TextAlignment.RIGHT)
                         .SetPaddingRight(25)
-                        .Add(new Paragraph().Add("AMOUNT").SetFontSize(9).SetPaddingRight(25).SetFont(customFont));
+                        .Add(new Paragraph().Add("AMOUNT").SetFontSize(10).SetPaddingRight(25).SetFont(boldFont));
                     table6.AddCell(cell61);
                     table6.AddCell(cell62);
 
-                    float col71 = 300f;
-                    float col72 = 300f;
-                    float[] colwidth7 = { col71, col72 };
-                    Table table7 = new Table(colwidth6)
+                    float col71 = 200f;
+                    float col72 = 195f;
+                    float col73 = 106f;
+                    float col74 = 94f;
+                    float[] colwidth7 = { col71, col72, col73, col74 };
+                    Table table7 = new Table(colwidth7)
                         .SetMarginTop(5)
                        
                          .SetWidth(595)
@@ -482,22 +593,39 @@ namespace CEM
                         .SetBorderBottom(new SolidBorder(0.5f))
                         .SetPaddingLeft(25)
                         .SetFontSize(10)
-                        .Add(new Paragraph().Add(ItemName).SetStrokeWidth(2).SetStrokeColor(ColorConstants.BLACK))
-                        .Add(new Paragraph().Add(ItemDescription).SetFontSize(8));
-
+                        .Add(new Paragraph().Add(txtitemname.Text).SetStrokeWidth(2).SetStrokeColor(ColorConstants.BLACK))
+                        .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8));
 
                     Cell cell72 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderBottom(new SolidBorder(0.5f))
-                        .SetTextAlignment(TextAlignment.RIGHT)
-                        .SetPaddingRight(25)
-                        .Add(new Paragraph().Add("₹" + Subtotoal).SetPaddingRight(25).SetFont(boldFont));
+                        .SetPaddingLeft(25)
+                        .SetFontSize(10);
+
+                    Cell cell73 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        .SetBorderBottom(new SolidBorder(0.5f))
+                        .SetPaddingLeft(25)
+                        .SetFontSize(10);
+                        
+
+
+                    Cell cell74 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        .SetBorderBottom(new SolidBorder(0.5f))
+                        
+                        .SetFontSize(11)
+                        .Add(SubtotalParagraph);
                     table7.AddCell(cell71);
                     table7.AddCell(cell72);
+                    table7.AddCell(cell73);
+                    table7.AddCell(cell74);
 
-                    float col81 = 300f;
-                    float col82 = 300f;
-                    float[] colwidth8 = { col81, col82 };
+                    float col81 = 200f;
+                    float col82 = 195f;
+                    float col83 = 106f;
+                    float col84 = 94f;
+                    float[] colwidth8 = { col81, col82, col83, col84 };
                     Table table8 = new Table(colwidth8)
                          
                          .SetWidth(595)
@@ -507,31 +635,106 @@ namespace CEM
                        
 
                     Cell cell81 = new Cell(1, 1)
-                         .SetBorder(Border.NO_BORDER)
+                        .SetBorder(Border.NO_BORDER)
+                       
                         .SetPaddingLeft(25)
                         
                         .SetFontSize(9)
                         .Add(new Paragraph(""));
 
                     Cell cell82 = new Cell(1, 1)
-
-
-
                         .SetBorder(Border.NO_BORDER)
                         .SetPaddingTop(10)
                         .SetFontSize(10)
-                        .SetTextAlignment(TextAlignment.RIGHT)
+                        .SetTextAlignment(TextAlignment.LEFT);
+                    Cell cell83 = null;
+                    if (rbtninterstate.Checked == true)
+                    {
+                        cell83 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        
+                        //.SetFontSize(10)
+                        
                         .SetPaddingRight(25)
-                        .Add(new Paragraph().Add("Subtotal        " + Subtotoal).SetFontSize(9).SetPaddingRight(25));
-                        /*.Add(new Paragraph().Add("CGST        " + CGST).SetFontSize(9).SetPaddingRight(25))
-                        .Add(new Paragraph().Add("SGST        " + SGST).SetFontSize(9).SetPaddingRight(25))
-                        .Add(new Paragraph().Add("IGST        " + IGST).SetFontSize(9).SetPaddingRight(25));*/
+                        .Add(new Paragraph().Add("Subtotal          ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
+                         .Add(new Paragraph().Add("IGST(18%)            ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+                    }
+                    if (rbtnwithinstate.Checked == true)
+                    {
+                        cell83 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                      
+                        //.SetFontSize(10)
+                       
+                        .SetPaddingRight(25)
+                        .Add(new Paragraph().Add("Subtotal          ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
+                        .Add(new Paragraph().Add("CGST(9%)          ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
+                        .Add(new Paragraph().Add("SGST(9%)          ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+
+
+                    }
+                    if (rbtnigstforeign.Checked == true)
+                    {
+                        cell83 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                      
+                        //.SetFontSize(9)
+                      
+                        .SetPaddingRight(25)
+                        .Add(new Paragraph().Add("Subtotal          ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
+                         .Add(new Paragraph().Add("IGST(18%)            ").SetFontSize(9).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+
+                    }
+
+                    Cell cell84 =null;
+                    if (rbtninterstate.Checked == true)
+                    {
+                        cell84 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                       
+                        .SetFontSize(9)
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetPaddingRight(25)
+                        .Add(SubtotalParagraph)
+                         .Add(IGSTParagraph);
+                    }
+
+                    if (rbtnwithinstate.Checked == true)
+                    {
+                        cell84 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        
+                        .SetFontSize(9)
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetPaddingRight(25)
+                        .Add(SubtotalParagraph)
+                         .Add(CGSTParagraph)
+                        .Add(SGSTParagraph);
+                     
+
+                    }
+                    if (rbtnigstforeign.Checked == true)
+                    {
+                        cell84 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        
+                        .SetFontSize(9)
+                        .SetTextAlignment(TextAlignment.LEFT)
+                        .SetPaddingRight(25)
+                        .Add(SubtotalParagraph)
+                         .Add(IGSTParagraph);
+
+                    }
                     table8.AddCell(cell81);
                     table8.AddCell(cell82);
+                    table8.AddCell(cell83);
+                    table8.AddCell(cell84);
 
-                    float col91 = 300f;
-                    float col92 = 180f;
-                    float[] colwidth9 = { col91, col92 };
+                    float col91 = 200f;
+                    float col92 = 195f;
+                    float col93 = 106f;
+                    float col94 = 94f;
+                    float[] colwidth9 = { col91, col92, col93, col94 };
                     Table table9 = new Table(colwidth9)
 
                          .SetWidth(595)
@@ -548,18 +751,33 @@ namespace CEM
                         .Add(new Paragraph(""));
 
                     Cell cell92 = new Cell(1, 1)
+                       .SetBorder(Border.NO_BORDER)
+                       .SetPaddingLeft(25)
+
+                       .SetFontSize(9)
+                       .Add(new Paragraph(""));
+                    Cell cell93 = new Cell(1, 1)
+                       .SetBorder(Border.NO_BORDER)
+                        .SetBorderTop(new SolidBorder(0.5f))
+                     
+
+                       .SetFontSize(11)
+                       .Add(new Paragraph("Total")).SetTextAlignment(TextAlignment.LEFT);
+                    Cell cell94 = new Cell(1, 1)
 
 
 
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderTop(new SolidBorder(0.5f))
-                        .SetFontSize(10)
-                        .SetTextAlignment(TextAlignment.RIGHT)
+                        .SetFontSize(11)
+                        .SetTextAlignment(TextAlignment.LEFT)
                         .SetPaddingRight(25)
                        
-                        .Add(new Paragraph().Add("Total        " + TotalAmount).SetFontSize(10).SetPaddingRight(25).SetFontSize(12).SetFont(boldFont));
+                        .Add(TotalParagraph);
                     table9.AddCell(cell91);
                     table9.AddCell(cell92);
+                    table9.AddCell(cell93);
+                    table9.AddCell(cell94);
 
                     float col101 = 300f;
                     float col102 = 300f;
@@ -879,6 +1097,11 @@ namespace CEM
             
               
            
+        }
+
+        private void textEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

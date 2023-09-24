@@ -194,38 +194,38 @@ namespace CEM
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(918, 68);
+            this.barDockControlTop.Size = new System.Drawing.Size(918, 76);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 507);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 509);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(918, 31);
+            this.barDockControlBottom.Size = new System.Drawing.Size(918, 29);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 68);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 76);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 439);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 433);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(918, 68);
+            this.barDockControlRight.Location = new System.Drawing.Point(918, 76);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 439);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 433);
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(114, 114);
+            this.txtAddress.Location = new System.Drawing.Point(114, 150);
             this.txtAddress.MenuManager = this.barManager1;
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(342, 30);
+            this.txtAddress.Size = new System.Drawing.Size(342, 42);
             this.txtAddress.StyleController = this.dataLayoutControl1;
             this.txtAddress.TabIndex = 8;
             // 
@@ -242,11 +242,11 @@ namespace CEM
             this.dataLayoutControl1.Controls.Add(this.txtClientName);
             this.dataLayoutControl1.Controls.Add(this.txtAddress);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 68);
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 76);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(954, 174, 812, 500);
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(918, 439);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(918, 433);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -254,10 +254,10 @@ namespace CEM
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(12, 216);
+            this.dataGridView2.Location = new System.Drawing.Point(12, 288);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(894, 211);
+            this.dataGridView2.Size = new System.Drawing.Size(894, 133);
             this.dataGridView2.TabIndex = 13;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -265,64 +265,64 @@ namespace CEM
             // 
             // txtGST
             // 
-            this.txtGST.Location = new System.Drawing.Point(114, 182);
+            this.txtGST.Location = new System.Drawing.Point(114, 242);
             this.txtGST.MenuManager = this.barManager1;
             this.txtGST.Name = "txtGST";
-            this.txtGST.Size = new System.Drawing.Size(792, 30);
+            this.txtGST.Size = new System.Drawing.Size(792, 42);
             this.txtGST.StyleController = this.dataLayoutControl1;
             this.txtGST.TabIndex = 12;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(562, 148);
+            this.txtEmail.Location = new System.Drawing.Point(562, 196);
             this.txtEmail.MenuManager = this.barManager1;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(344, 30);
+            this.txtEmail.Size = new System.Drawing.Size(344, 42);
             this.txtEmail.StyleController = this.dataLayoutControl1;
             this.txtEmail.TabIndex = 11;
             // 
             // txtContact
             // 
-            this.txtContact.Location = new System.Drawing.Point(114, 148);
+            this.txtContact.Location = new System.Drawing.Point(114, 196);
             this.txtContact.MenuManager = this.barManager1;
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(342, 30);
+            this.txtContact.Size = new System.Drawing.Size(342, 42);
             this.txtContact.StyleController = this.dataLayoutControl1;
             this.txtContact.TabIndex = 10;
             // 
             // txtCountry
             // 
-            this.txtCountry.Location = new System.Drawing.Point(562, 114);
+            this.txtCountry.Location = new System.Drawing.Point(562, 150);
             this.txtCountry.MenuManager = this.barManager1;
             this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Size = new System.Drawing.Size(344, 30);
+            this.txtCountry.Size = new System.Drawing.Size(344, 42);
             this.txtCountry.StyleController = this.dataLayoutControl1;
             this.txtCountry.TabIndex = 9;
             // 
             // txtPreferred
             // 
-            this.txtPreferred.Location = new System.Drawing.Point(562, 80);
+            this.txtPreferred.Location = new System.Drawing.Point(562, 104);
             this.txtPreferred.MenuManager = this.barManager1;
             this.txtPreferred.Name = "txtPreferred";
-            this.txtPreferred.Size = new System.Drawing.Size(344, 30);
+            this.txtPreferred.Size = new System.Drawing.Size(344, 42);
             this.txtPreferred.StyleController = this.dataLayoutControl1;
             this.txtPreferred.TabIndex = 7;
             // 
             // txtDisplay
             // 
-            this.txtDisplay.Location = new System.Drawing.Point(114, 80);
+            this.txtDisplay.Location = new System.Drawing.Point(114, 104);
             this.txtDisplay.MenuManager = this.barManager1;
             this.txtDisplay.Name = "txtDisplay";
-            this.txtDisplay.Size = new System.Drawing.Size(342, 30);
+            this.txtDisplay.Size = new System.Drawing.Size(342, 42);
             this.txtDisplay.StyleController = this.dataLayoutControl1;
             this.txtDisplay.TabIndex = 6;
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(114, 46);
+            this.txtCompanyName.Location = new System.Drawing.Point(114, 58);
             this.txtCompanyName.MenuManager = this.barManager1;
             this.txtCompanyName.Name = "txtCompanyName";
-            this.txtCompanyName.Size = new System.Drawing.Size(792, 30);
+            this.txtCompanyName.Size = new System.Drawing.Size(792, 42);
             this.txtCompanyName.StyleController = this.dataLayoutControl1;
             this.txtCompanyName.TabIndex = 5;
             // 
@@ -330,7 +330,7 @@ namespace CEM
             // 
             this.txtClientName.Location = new System.Drawing.Point(114, 12);
             this.txtClientName.Name = "txtClientName";
-            this.txtClientName.Size = new System.Drawing.Size(792, 30);
+            this.txtClientName.Size = new System.Drawing.Size(792, 42);
             this.txtClientName.StyleController = this.dataLayoutControl1;
             this.txtClientName.TabIndex = 4;
             // 
@@ -350,7 +350,7 @@ namespace CEM
             this.layoutControlItem4,
             this.we});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(918, 439);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(918, 433);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -358,88 +358,88 @@ namespace CEM
             this.layoutControlItem1.Control = this.txtClientName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(898, 34);
+            this.layoutControlItem1.Size = new System.Drawing.Size(898, 46);
             this.layoutControlItem1.Text = "Client Name:";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.txtCompanyName;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 46);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(898, 34);
+            this.layoutControlItem2.Size = new System.Drawing.Size(898, 46);
             this.layoutControlItem2.Text = "Company Name:";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtDisplay;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 92);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(448, 34);
+            this.layoutControlItem3.Size = new System.Drawing.Size(448, 46);
             this.layoutControlItem3.Text = "Display Block:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.txtAddress;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 138);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(448, 34);
+            this.layoutControlItem5.Size = new System.Drawing.Size(448, 46);
             this.layoutControlItem5.Text = "Address:";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtContact;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 136);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 184);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(448, 34);
+            this.layoutControlItem7.Size = new System.Drawing.Size(448, 46);
             this.layoutControlItem7.Text = "Contact Number:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.txtGST;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 170);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 230);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(898, 34);
+            this.layoutControlItem9.Size = new System.Drawing.Size(898, 46);
             this.layoutControlItem9.Text = "GST Number:";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.txtEmail;
-            this.layoutControlItem8.Location = new System.Drawing.Point(448, 136);
+            this.layoutControlItem8.Location = new System.Drawing.Point(448, 184);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(450, 34);
+            this.layoutControlItem8.Size = new System.Drawing.Size(450, 46);
             this.layoutControlItem8.Text = "Email:";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtCountry;
-            this.layoutControlItem6.Location = new System.Drawing.Point(448, 102);
+            this.layoutControlItem6.Location = new System.Drawing.Point(448, 138);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(450, 34);
+            this.layoutControlItem6.Size = new System.Drawing.Size(450, 46);
             this.layoutControlItem6.Text = "Country:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(99, 17);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.txtPreferred;
-            this.layoutControlItem4.Location = new System.Drawing.Point(448, 68);
+            this.layoutControlItem4.Location = new System.Drawing.Point(448, 92);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(450, 34);
+            this.layoutControlItem4.Size = new System.Drawing.Size(450, 46);
             this.layoutControlItem4.Text = "Preferred Block:";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(99, 17);
             // 
             // we
             // 
             this.we.Control = this.dataGridView2;
-            this.we.Location = new System.Drawing.Point(0, 204);
+            this.we.Location = new System.Drawing.Point(0, 276);
             this.we.Name = "we";
-            this.we.Size = new System.Drawing.Size(898, 215);
+            this.we.Size = new System.Drawing.Size(898, 137);
             this.we.TextSize = new System.Drawing.Size(0, 0);
             this.we.TextVisible = false;
             // 
@@ -469,6 +469,7 @@ namespace CEM
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMain2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client Form";
             this.Load += new System.EventHandler(this.frmMain2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

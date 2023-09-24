@@ -1,6 +1,9 @@
+C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\IndianRupee.ttf
+C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\Rupee_Foradian.ttf
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\painted-logo3.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\email-icon.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\bank.png
+C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\rupee.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.exe.config
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.exe
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.pdb
@@ -256,4 +259,3 @@ C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.CopyComplete
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.exe
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.pdb
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.AssemblyReference.cache
-C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\IndianRupee.ttf
