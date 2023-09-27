@@ -43,9 +43,9 @@ namespace CEM
             InitializeComponent();
             conn = new SqlConnection(path
                );
-            AllDisplay();
+            //AllDisplay();
         }
-        public void AllDisplay()
+       /* public void AllDisplay()
         {
             try
             {
@@ -61,7 +61,7 @@ namespace CEM
             {
                 MessageBox.Show(ex.Message);
             }
-        }
+        }*/
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (txtClientName.Text==""||txtCompanyName.Text==""||txtDisplay.Text==""||txtPreferred.Text==""||txtAddress.Text==""||txtCountry.Text==""
@@ -101,7 +101,7 @@ namespace CEM
                 {
                     MessageBox.Show("Data Successfully Inserted");
                    
-                    AllDisplay(); // Refresh the DataGridView
+                    //AllDisplay(); // Refresh the DataGridView
 
                 }
                 else
@@ -125,7 +125,7 @@ namespace CEM
 
         }
 
-        private void frmMain2_Load(object sender, EventArgs e)
+       /* private void frmMain2_Load(object sender, EventArgs e)
         {
             
 
@@ -138,7 +138,7 @@ namespace CEM
             dataGridView2.Columns[6].Width = 320;
             dataGridView2.Columns[7].Width = 320;
             dataGridView2.Columns[8].Width = 320;
-        }
+        }*/
 
         private void btnUpdate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -188,7 +188,7 @@ namespace CEM
             txtCountry.ReadOnly = true;
             txtGST.ReadOnly = true;
 
-            txtClientName.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+           /* txtClientName.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtCompanyName.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtDisplay.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtPreferred.Text = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
@@ -196,7 +196,7 @@ namespace CEM
             txtCountry.Text = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
             txtContact.Text = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtEmail.Text = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
-            txtGST.Text = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
+            txtGST.Text = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();*/
         }
 
         private void btnDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -238,7 +238,7 @@ namespace CEM
             this.Close();
         }
 
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+       /* private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -268,7 +268,7 @@ namespace CEM
                 email = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
                 gst = dataGridView2.Rows[e.RowIndex].Cells[9].Value.ToString();
             }
-        }
+        }*/
 
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -281,6 +281,76 @@ namespace CEM
                 o.Show();
 
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (txtClientName.Text == "" || txtCompanyName.Text == "" || txtDisplay.Text == "" || txtPreferred.Text == "" || txtAddress.Text == "" || txtCountry.Text == ""
+               || txtContact.Text == "" || txtContact.Text == "" || txtEmail.Text == "" || txtGST.Text == "")
+            {
+                MessageBox.Show("Please fill in the  fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            client_name = txtClientName.Text;
+            company_name = txtCompanyName.Text;
+            display_block = txtDisplay.Text;
+            preferred_block = txtPreferred.Text;
+            address = txtAddress.Text;
+            country = txtCountry.Text;
+            contact = txtContact.Text;
+            email = txtEmail.Text;
+            gst = txtGST.Text;
+            try
+            {
+                conn.Open();
+                string query = "exec InsertClient @name,@company,@display_block, @preferred_block, @address, @country, @contact,  @email,  @gst";
+                cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@name", client_name);
+                cmd.Parameters.AddWithValue("@company", company_name);
+                cmd.Parameters.AddWithValue("@display_block", display_block);
+                cmd.Parameters.AddWithValue("@preferred_block", preferred_block);
+                cmd.Parameters.AddWithValue("@address", address);
+                cmd.Parameters.AddWithValue("@country", country);
+                cmd.Parameters.AddWithValue("@contact", contact);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@gst", gst);
+                
+
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+                if (rowsAffected > 0)
+                {
+                    
+                    MessageBox.Show("Data Successfully Inserted");
+                    ClientDetails clientForm = Application.OpenForms["ClientDetails"] as ClientDetails;
+                    clientForm.RefreshDataGridView();
+                    clientForm.NoBlueColored();
+
+                }
+                else
+                {
+                    MessageBox.Show("Data Insertion Failed");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close(); // Make sure to close the connection in the finally block
+            }
+            this.Close();
+        }
+
+        private void frmMain2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

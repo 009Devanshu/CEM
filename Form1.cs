@@ -20,9 +20,21 @@ namespace CEM
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmMain frm = new frmMain();
-            frm.MdiParent = this;
-            frm.Show();
+
+            Company_Details company_Details = new Company_Details();
+            company_Details.MdiParent = this;
+            company_Details.Show();
+
+            /* frmMain frm = new frmMain();
+             frm.MdiParent = this;
+             frm.Show();*/
+           /* if (!container.Controls.Contains(ucRegister.Instance))
+            {
+                container.Controls.Add(ucRegister.Instance);
+                ucRegister.Instance.Dock = DockStyle.Fill;
+                ucRegister.Instance.BringToFront();
+            }
+            ucRegister.Instance.BringToFront();*/
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -38,6 +50,20 @@ namespace CEM
             {
                 Thread.Sleep(30);
             }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ClientDetails Client_Details = new ClientDetails();
+            Client_Details.MdiParent = this;
+            Client_Details.Show();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            InvoiceDetails Invoice_Details = new InvoiceDetails();
+            Invoice_Details.MdiParent = this;
+            Invoice_Details.Show();
         }
     }
 }

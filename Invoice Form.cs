@@ -41,13 +41,7 @@ namespace CEM
         string client_gst;
         string initial_gst_number;
         string client_country;
-        double IGST;
-        double CGST;
-        double SGST;
-        double amount;
-        string CGSTText;
-        string SGSTText;
-        string IGSTText;
+       
 
         //converting amout,cgst,igst,sgst into string
         string amountstring;
@@ -123,15 +117,14 @@ namespace CEM
             
 
             //Filling Text Fields for client
-            Form f = Application.OpenForms["frmMain2"];
-            txtclient.Text =  ((frmMain2)f).client_name;
-            txtcompany.Text =  ((frmMain2)f).company_name;
-            txtaddress.Text=((frmMain2)f).address;
-            load_invoice_number = ((frmMain2)f).Invoice_Number;
-            client_gst = ((frmMain2)f).gst;
-            client_country = ((frmMain2)f).country;
-            txtClientCountry.Text = client_country;
-            
+            ClientDetails f= Application.OpenForms["ClientDetails"] as ClientDetails;
+            client_name =  ((ClientDetails)f).client_name;
+            client_company =  ((ClientDetails)f).company_name;
+            client_address=((ClientDetails)f).client_address;
+            //load_invoice_number = ((ClientDetails)f).invoice_number;
+            client_gst = ((ClientDetails)f).client_gst;
+            client_country = ((ClientDetails)f).client_country;
+          
             
             initial_gst_number = client_gst.Substring(0, 2);
             
@@ -148,18 +141,14 @@ namespace CEM
             {
                 rbtninterstate.Checked = true;
             }
-            txtgst.Text = client_gst;
-            //txtcountry.Text  = ((frmMain2)f).country;
-            txtinvoicenumber.Text= (int.Parse(load_invoice_number) + 1).ToString();
+           
+            client_country  = ((ClientDetails)f).client_country;
+            //txtinvoicenumber.Text= (int.Parse(load_invoice_number) + 1).ToString();
 
            
-            //Inserting Data into fields
-            client_name = txtclient.Text;
-            client_company=txtcompany.Text;
-            client_address=txtaddress.Text;
-            //client_country=txtcountry.Text;
+          
 
-            client_gst = ((frmMain2)f).gst;
+            client_gst = ((ClientDetails)f).client_gst;
 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
 
@@ -228,7 +217,7 @@ namespace CEM
             {
                 connection.Open();
 
-                string query = "update client set invoice_number="+ int.Parse(txtinvoicenumber.Text) + " where name='"+txtclient.Text+"'"; 
+                string query = "update client set invoice_number=" + int.Parse(txtinvoicenumber.Text) + " where name='" + client_name + "'";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -268,20 +257,10 @@ namespace CEM
             }
 
 
-            string CompanyGST = "";
-            string LUT = "";
-            string CIN = "";
+           
            
             DateTime InvoiceDate = DateTime.Parse(dateTimePicker1.Text);
-            string TotalAmount = "";
-            string ClientName = txtclient.Text;
-            string ClientCompanay = txtcompany.Text;
-            string ClientAddress = txtaddress.Text;
-            string ClientCountry = txtClientCountry.Text;
            
-            string ItemName = "";
-            string ItemDescription = "";
-            string rupeeSymbol = "";
             double Subtotoal = double.Parse(txtenteramount.Text);
 
             double CGST= (Subtotoal * 9) / 100;
@@ -317,7 +296,7 @@ namespace CEM
             
             
             //Creating pdf with iText7 library
-            string client_name =  txtclient.Text;
+            //string client_name =  txtclient.Text;
 
             var folderPath = $"C:\\InvoiceReports\\{client_name}_SalarySlips";
 
@@ -344,7 +323,7 @@ namespace CEM
             iText.Layout.Element.Image icon = new iText.Layout.Element.Image(ImageDataFactory.Create(IconImagepath));
             icon.SetHeight(12);
             icon.SetWidth(12);
-            //icon.SetFixedPosition(37, 615);
+           
 
             string RupeesPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "rupee.png");
             iText.Layout.Element.Image RupeeIcon = new iText.Layout.Element.Image(ImageDataFactory.Create(RupeesPath));
@@ -355,7 +334,7 @@ namespace CEM
             iText.Layout.Element.Image BankIcon = new iText.Layout.Element.Image(ImageDataFactory.Create(BankIconPath));
             BankIcon.SetHeight(20);
             BankIcon.SetWidth(20);
-            //BankIcon.SetFixedPosition(37, 615);
+            
 
             PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
             PdfFont boldFont2 = PdfFontFactory.CreateFont(StandardFonts.COURIER);
@@ -363,9 +342,7 @@ namespace CEM
             string fontPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "IndianRupee.ttf");
             PdfFont customFont = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
 
-            /* string Total = "1000"; // Replace with your actual subtotal value
-            string rSymbol = "\u20B9";
-            Paragraph rupeeParagraph = new Paragraph().Add(new Text(rSymbol).SetFont(customFont)).Add(" " + Total).SetTextAlignment(TextAlignment.LEFT);*/
+         
 
             Paragraph TotalParagraph=null;
             Paragraph SubtotalParagraph = null;
@@ -536,9 +513,9 @@ namespace CEM
                         .SetBorder(Border.NO_BORDER)
                         .SetFont(boldFont)
                         .Add(new Paragraph().Add("BILL TO:"))
-                        .Add(new Paragraph().Add(ClientName).SetFontSize(9).SetPaddingTop(6))
-                        .Add(new Paragraph().Add(ClientName).SetFontSize(9))
-                        .Add(new Paragraph().Add(ClientAddress+", "+ClientCountry).SetFontSize(9))
+                        .Add(new Paragraph().Add("").SetFontSize(9).SetPaddingTop(6))
+                        .Add(new Paragraph().Add("").SetFontSize(9))
+                        .Add(new Paragraph().Add(""+", "+"").SetFontSize(9))
                         .Add(new Paragraph().Add("GST: "+client_gst).SetFontSize(9));
                     table5.AddCell(cell51);
 

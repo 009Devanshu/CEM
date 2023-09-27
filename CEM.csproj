@@ -169,18 +169,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="CompanyDetails.cs" />
+    <Compile Include="ClientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientDetails.Designer.cs">
+      <DependentUpon>ClientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Delete_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Client_Delete_Form.Designer.cs">
+      <DependentUpon>Client_Delete_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyDetails.Designer.cs">
+      <DependentUpon>CompanyDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyRegistration.Designer.cs">
+      <DependentUpon>CompanyRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyUpdateForm.Designer.cs">
+      <DependentUpon>CompanyUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain2.cs">
       <SubType>Form</SubType>
@@ -200,17 +223,11 @@
     <Compile Include="Invoice Form.Designer.cs">
       <DependentUpon>Invoice Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="InvoiceReport.Designer.cs">
-      <DependentUpon>InvoiceReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Print.cs">
+    <Compile Include="InvoiceDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Print.Designer.cs">
-      <DependentUpon>Print.cs</DependentUpon>
+    <Compile Include="InvoiceDetails.Designer.cs">
+      <DependentUpon>InvoiceDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,23 +236,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <Compile Include="ucDetails.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="ClientUpdate.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ucDetails.Designer.cs">
-      <DependentUpon>ucDetails.cs</DependentUpon>
+    <Compile Include="ClientUpdate.Designer.cs">
+      <DependentUpon>ClientUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucRegister.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ucRegister.Designer.cs">
-      <DependentUpon>ucRegister.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="ClientDetails.resx">
+      <DependentUpon>ClientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client_Delete_Form.resx">
+      <DependentUpon>Client_Delete_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyDetails.resx">
+      <DependentUpon>CompanyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyRegistration.resx">
+      <DependentUpon>CompanyRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyUpdateForm.resx">
+      <DependentUpon>CompanyUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain2.resx">
       <DependentUpon>frmMain2.cs</DependentUpon>
@@ -246,11 +269,8 @@
     <EmbeddedResource Include="Invoice Form.resx">
       <DependentUpon>Invoice Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InvoiceReport.resx">
-      <DependentUpon>InvoiceReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Print.resx">
-      <DependentUpon>Print.cs</DependentUpon>
+    <EmbeddedResource Include="InvoiceDetails.resx">
+      <DependentUpon>InvoiceDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -266,11 +286,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucDetails.resx">
-      <DependentUpon>ucDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ucRegister.resx">
-      <DependentUpon>ucRegister.cs</DependentUpon>
+    <EmbeddedResource Include="ClientUpdate.resx">
+      <DependentUpon>ClientUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>

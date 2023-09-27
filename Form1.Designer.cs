@@ -33,9 +33,9 @@ namespace CEM
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::CEM.frmSplashScreen), true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribboncompanydetails = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -57,41 +57,43 @@ namespace CEM
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
-            this.barButtonItem4,
-            this.barButtonItem5,
-            this.barButtonItem7});
+            this.ribboncompanydetails,
+            this.barButtonItem1,
+            this.barButtonItem2});
             this.ribbonControl1.LargeImages = this.imageCollection1;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(12, 18, 12, 18);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 10;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.Size = new System.Drawing.Size(1276, 265);
             // 
-            // barButtonItem4
+            // ribboncompanydetails
             // 
-            this.barButtonItem4.Caption = "CLIENT MANAGEMENT";
-            this.barButtonItem4.Id = 4;
-            this.barButtonItem4.ImageOptions.LargeImageIndex = 1;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            this.ribboncompanydetails.Caption = "COMPANY DETAILS";
+            this.ribboncompanydetails.Id = 4;
+            this.ribboncompanydetails.ImageOptions.LargeImageIndex = 2;
+            this.ribboncompanydetails.Name = "ribboncompanydetails";
+            this.ribboncompanydetails.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            this.ribboncompanydetails.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
-            // barButtonItem5
+            // barButtonItem1
             // 
-            this.barButtonItem5.Caption = "Home";
-            this.barButtonItem5.Id = 5;
-            this.barButtonItem5.ImageOptions.LargeImageIndex = 5;
-            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem1.Caption = "CLIENT DETAILS";
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.ImageOptions.LargeImageIndex = 1;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            // barButtonItem7
+            // barButtonItem2
             // 
-            this.barButtonItem7.Caption = "Salary Slip";
-            this.barButtonItem7.Id = 7;
-            this.barButtonItem7.ImageOptions.LargeImageIndex = 3;
-            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem2.Caption = "INVOICES";
+            this.barButtonItem2.Id = 9;
+            this.barButtonItem2.ImageOptions.LargeImageIndex = 6;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // imageCollection1
             // 
@@ -117,7 +119,9 @@ namespace CEM
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.ribboncompanydetails, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2, true);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // documentManager1
@@ -156,12 +160,12 @@ namespace CEM
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem ribboncompanydetails;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
 
