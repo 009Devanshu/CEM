@@ -121,22 +121,112 @@
   <data name="bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BebasNeue_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\BebasNeue-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Bebas_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Bebas-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Caviar_Dreams_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Caviar_Dreams_Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CodeSaver_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CodeSaver-Regular.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="email_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\email-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IndianRupee" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\IndianRupee.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="HELVBLAK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\HELVBLAK.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HelveticaLt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\HelveticaLt.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Hind_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Hind-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IBMPlexSansDevanagari_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\IBMPlexSansDevanagari-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IBMPlexSansDevanagari_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\IBMPlexSansDevanagari-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IBMPlexSansDevanagari_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\IBMPlexSansDevanagari-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IBMPlexSansDevanagari_SemiBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\IBMPlexSansDevanagari-SemiBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="IndianRupee__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\IndianRupee (1).ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ITF_Rupee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ITF-Rupee.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Merriweather_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Merriweather-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NimbusSanL_RegIta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\NimbusSanL-RegIta.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NotoSans_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\NotoSans-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="OpenSans_VariableFont_wdth_wght" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\OpenSans-VariableFont_wdth,wght.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="painted_logo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\painted-logo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Poppins_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Poppins-Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Poppins-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Poppins_SemiBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Poppins-SemiBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Quicksand_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Quicksand-Regular.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Rajdhani_Bold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Rajdhani-Bold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Rajdhani_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Rajdhani-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Rajdhani_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Rajdhani-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Rajdhani_SemiBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Rajdhani-SemiBold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Raleway_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Raleway-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Roboto_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Roboto-Light.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Roboto_Medium" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Roboto-Medium.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Roboto_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Roboto-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="rupee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\rupee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Rupee_Foradian" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Rupee_Foradian.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SansSerif" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\SansSerif.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Tinos_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Tinos-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WorkSans_VariableFont_wght" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\WorkSans-VariableFont_wght.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

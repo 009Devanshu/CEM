@@ -308,7 +308,7 @@ namespace CEM
             try
             {
                 conn.Open();
-                string query = "exec InsertClient @name,@company,@display_block, @preferred_block, @address, @country, @contact,  @email,  @gst";
+                string query = "exec InsertClient @name,@company,@display_block, @preferred_block, @address, @country, @contact,  @email,  @gst, @IsDeleted";
                 cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", client_name);
                 cmd.Parameters.AddWithValue("@company", company_name);
@@ -319,7 +319,8 @@ namespace CEM
                 cmd.Parameters.AddWithValue("@contact", contact);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@gst", gst);
-                
+                cmd.Parameters.AddWithValue("@IsDeleted", 1);
+
 
                 int rowsAffected = cmd.ExecuteNonQuery();
                 conn.Close();
@@ -346,6 +347,8 @@ namespace CEM
                 conn.Close(); // Make sure to close the connection in the finally block
             }
             this.Close();
+
+            
         }
 
         private void frmMain2_Load(object sender, EventArgs e)

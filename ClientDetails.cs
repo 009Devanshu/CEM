@@ -50,12 +50,24 @@ namespace CEM
         {
             try
             {
-                dt = new DataTable();
+
+                dt = new System.Data.DataTable();
                 conn.Open();
                 adpt = new SqlDataAdapter("exec LoadClient", conn);
                 adpt.Fill(dt);
-                dataGridView2.DataSource = dt;
+                //dataGridView2.DataSource = dt;
+                // Filter the DataTable to only include rows where the IsDeleted column is 1
+                DataRow[] filteredRows = dt.Select("IsPresent=1");
+                DataTable filteredDataTable = dt.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredDataTable.ImportRow(row); // Import the matching rows into the new DataTable
+                }
+                dataGridView2.DataSource = filteredDataTable;
+
+
                 conn.Close();
+
             }
             catch (Exception ex)
             {
@@ -71,8 +83,19 @@ namespace CEM
                 conn.Open();
                 adpt = new SqlDataAdapter("exec LoadClient", conn);
                 adpt.Fill(dt);
-                dataGridView2.DataSource = dt;
+                //dataGridView2.DataSource = dt;
+                // Filter the DataTable to only include rows where the IsDeleted column is 1
+                DataRow[] filteredRows = dt.Select("IsPresent=1");
+                DataTable filteredDataTable = dt.Clone();
+                foreach (DataRow row in filteredRows)
+                {
+                    filteredDataTable.ImportRow(row); // Import the matching rows into the new DataTable
+                }
+                dataGridView2.DataSource = filteredDataTable;
+
+
                 conn.Close();
+               
             }
             catch (Exception ex)
             {
@@ -95,7 +118,7 @@ namespace CEM
             dataGridView2.Columns[6].HeaderCell.Style.Font = new Font("Tahoma", 8.5f, FontStyle.Bold);
             dataGridView2.Columns[7].HeaderCell.Style.Font = new Font("Tahoma", 8.5f, FontStyle.Bold);
             dataGridView2.Columns[8].HeaderCell.Style.Font = new Font("Tahoma", 8.5f, FontStyle.Bold);
-            //dataGridView2.Columns[9].HeaderCell.Style.Font = new Font("Tahoma", 8.5f, FontStyle.Bold);
+            dataGridView2.Columns[9].HeaderCell.Style.Font = new Font("Tahoma", 8.5f, FontStyle.Bold);
 
 
 
@@ -108,7 +131,7 @@ namespace CEM
             dataGridView2.Columns[6].Width = 320;
             dataGridView2.Columns[7].Width = 320;
             dataGridView2.Columns[8].Width = 320;
-            //dataGridView2.Columns[9].Width = 320;
+            dataGridView2.Columns[9].Width = 320;
             AllDisplay();
 
             NoBlueColored();
@@ -183,7 +206,7 @@ namespace CEM
                 client_country = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
                 contact_number = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
                 client_email = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
-                client_gst = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
+                //client_gst = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
 
                 GridRowColored();
             }

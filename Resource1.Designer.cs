@@ -73,9 +73,39 @@ namespace CEM {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Bebas_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Bebas_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BebasNeue_Regular {
+            get {
+                object obj = ResourceManager.GetObject("BebasNeue_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Caviar_Dreams_Bold {
             get {
                 object obj = ResourceManager.GetObject("Caviar_Dreams_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CodeSaver_Regular {
+            get {
+                object obj = ResourceManager.GetObject("CodeSaver_Regular", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -93,9 +123,129 @@ namespace CEM {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] IndianRupee {
+        internal static byte[] HELVBLAK {
             get {
-                object obj = ResourceManager.GetObject("IndianRupee", resourceCulture);
+                object obj = ResourceManager.GetObject("HELVBLAK", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] HelveticaLt {
+            get {
+                object obj = ResourceManager.GetObject("HelveticaLt", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Hind_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Hind_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IBMPlexSansDevanagari_Bold {
+            get {
+                object obj = ResourceManager.GetObject("IBMPlexSansDevanagari_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IBMPlexSansDevanagari_Medium {
+            get {
+                object obj = ResourceManager.GetObject("IBMPlexSansDevanagari_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IBMPlexSansDevanagari_Regular {
+            get {
+                object obj = ResourceManager.GetObject("IBMPlexSansDevanagari_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IBMPlexSansDevanagari_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("IBMPlexSansDevanagari_SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IndianRupee__1_ {
+            get {
+                object obj = ResourceManager.GetObject("IndianRupee__1_", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ITF_Rupee {
+            get {
+                object obj = ResourceManager.GetObject("ITF_Rupee", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Merriweather_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Merriweather_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NimbusSanL_RegIta {
+            get {
+                object obj = ResourceManager.GetObject("NimbusSanL_RegIta", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] NotoSans_Bold {
+            get {
+                object obj = ResourceManager.GetObject("NotoSans_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] OpenSans_VariableFont_wdth_wght {
+            get {
+                object obj = ResourceManager.GetObject("OpenSans_VariableFont_wdth_wght", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -107,6 +257,126 @@ namespace CEM {
             get {
                 object obj = ResourceManager.GetObject("painted_logo3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Light {
+            get {
+                object obj = ResourceManager.GetObject("Poppins_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Poppins_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Poppins_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("Poppins_SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Quicksand_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Quicksand_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rajdhani_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Rajdhani_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rajdhani_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Rajdhani_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rajdhani_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Rajdhani_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rajdhani_SemiBold {
+            get {
+                object obj = ResourceManager.GetObject("Rajdhani_SemiBold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Raleway_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Raleway_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Light {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Light", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Regular", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -126,6 +396,36 @@ namespace CEM {
         internal static byte[] Rupee_Foradian {
             get {
                 object obj = ResourceManager.GetObject("Rupee_Foradian", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SansSerif {
+            get {
+                object obj = ResourceManager.GetObject("SansSerif", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Tinos_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Tinos_Regular", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WorkSans_VariableFont_wght {
+            get {
+                object obj = ResourceManager.GetObject("WorkSans_VariableFont_wght", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -133,7 +133,7 @@ namespace CEM
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(901, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(857, 40);
             // 
             // barDockControlBottom
             // 
@@ -141,7 +141,7 @@ namespace CEM
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 442);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(901, 29);
+            this.barDockControlBottom.Size = new System.Drawing.Size(857, 29);
             // 
             // barDockControlLeft
             // 
@@ -155,7 +155,7 @@ namespace CEM
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(901, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(857, 40);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 402);
             // 
@@ -166,7 +166,7 @@ namespace CEM
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 40);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(901, 402);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(857, 402);
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -178,7 +178,7 @@ namespace CEM
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(877, 378);
+            this.dataGridView2.Size = new System.Drawing.Size(833, 378);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -191,7 +191,7 @@ namespace CEM
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(901, 402);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(857, 402);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem1
@@ -199,7 +199,7 @@ namespace CEM
             this.layoutControlItem1.Control = this.dataGridView2;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(881, 382);
+            this.layoutControlItem1.Size = new System.Drawing.Size(837, 382);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -207,7 +207,7 @@ namespace CEM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 471);
+            this.ClientSize = new System.Drawing.Size(857, 471);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
