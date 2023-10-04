@@ -67,6 +67,11 @@ namespace CEM
         int InvoiceNumber;
         string InvoiceNumberString;
 
+       
+       
+       
+      
+
 
         //DataSource Fiels
         string path = System.Configuration.ConfigurationManager.
@@ -747,6 +752,7 @@ namespace CEM
                         .SetPaddingTop(10)
                         .SetFontSize(10)
                         .SetTextAlignment(TextAlignment.LEFT);
+
                     Cell cell83 = null;
                     if (rbtninterstate.Checked == true)
                     {
@@ -995,193 +1001,7 @@ namespace CEM
 
 
 
-            /*amount =  double.Parse(txtamount.Text);
            
-            if (rbtninterstate.Checked==true)
-            {
-                IGST = (amount * 18) / 100;
-
-            }
-            else if (rbtnwithinstate.Checked == true)
-            {
-                CGST = (amount * 9) / 100;
-                SGST = (amount * 9) / 100;
-            }
-            amountstring = amount.ToString();
-            IGSTstring = IGST.ToString();
-            CGSTstring = CGST.ToString();
-            SGSTstring = SGST.ToString();
-
-            InvoiceReport invoiceReport = new InvoiceReport();
-            if (rbtnCompany1.Checked == true)
-            {
-               
-                using (SqlConnection conn = new SqlConnection(path))
-                {
-                    try
-                    {
-                        conn.Open();
-
-                        // Check if there is a record with the same name
-                        string query = "SELECT * FROM company INNER JOIN account ON company.company_id = account.accountId WHERE name = 'ATF Labs Private Limited'";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                your_gst = reader["gst"].ToString();
-                               
-                                your_lut = reader["lut"].ToString();
-                                your_cin = reader["cin"].ToString();
-                            }
-                            else
-                            {
-                                // Handle the case where no records match the condition.
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle exceptions (e.g., database connection error, query error)
-                        Console.WriteLine("An error occurred: " + ex.Message);
-                    }
-                }
-
-                
-
-                invoiceReport.Parameters["pMyCompany"].Value = "ATF LABS Pvt Ltd";
-                your_company = invoiceReport.Parameters["pMyCompany"].Value.ToString();
-                invoiceReport.Parameters["pYourGST"].Value=your_gst;
-                //your_gst = invoiceReport.Parameters["pYourGST"].Value.ToString();
-                
-                //Getting Email
-                invoiceReport.Parameters["pYourEmail"].Value = comboemail.Text;
-                your_email = invoiceReport.Parameters["pYourEmail"].Value.ToString();
-            }
-            if(rbtncompany2.Checked == true)
-            {
-                invoiceReport.Parameters["pMyCompany"].Value = "Alliance Techno Functionals";
-                your_company = invoiceReport.Parameters["pMyCompany"].Value.ToString();
-            }
-
-           
-
-            invoiceReport.Parameters["pClientName"].Value = txtclient.Text;
-            invoiceReport.Parameters["pClientCompanyName"].Value = txtcompany.Text;
-            invoiceReport.Parameters["pCompanyAddress"].Value = txtaddress.Text;
-
-            invoiceReport.Parameters["pClientGST"].Value =client_gst;
-            client_gst =invoiceReport.Parameters["pClientGST"].Value.ToString();
-
-            invoiceReport.Parameters["pTotalAmount"].Value = amountstring;
-            
-            invoiceReport.Parameters["pCGST"].Value = CGSTstring;
-            invoiceReport.Parameters["pSGST"].Value = SGSTstring;
-            invoiceReport.Parameters["pIGST"].Value = IGSTstring;
-            //client_gst =   invoiceReport.Parameters["pClientGST"].Value.ToString();
-            if (CGST != 0)
-            {
-                invoiceReport.Parameters["pCGSTText"].Value = "CGST";
-                CGSTText = invoiceReport.Parameters["pCGSTText"].Value.ToString();
-
-                invoiceReport.Parameters["pIGSTText"].Value = "";
-                IGSTText = invoiceReport.Parameters["pIGSTText"].Value.ToString();
-                IGSTstring = "";
-            }
-            if(SGST != 0)
-            {
-                invoiceReport.Parameters["pSGSTText"].Value = "SGST";
-                SGSTText = "SGST"; 
-            }
-            if (IGST != 0)
-            {
-                invoiceReport.Parameters["pIGSTText"].Value = "IGST";
-                IGSTText = invoiceReport.Parameters["pIGSTText"].Value.ToString();
-
-                invoiceReport.Parameters["pCGSTText"].Value = "";
-                CGSTText = invoiceReport.Parameters["pCGSTText"].Value.ToString();
-                CGSTstring = "";
-                invoiceReport.Parameters["pSGSTText"].Value = "";
-                SGSTText = invoiceReport.Parameters["pSGSTText"].Value.ToString();
-                SGSTstring = "";
-            }
-
-            //Bank Details
-            if (comboBank.Text == "HDFC Bank")
-            {
-                invoiceReport.Parameters["pAccountName"].Value = "ATF LABS PRIVATE LIMITED";
-                invoiceReport.Parameters["pAccountNumber"].Value = "50200059520889";
-                invoiceReport.Parameters["pIFSC"].Value = "HDFC0000121";
-                invoiceReport.Parameters["pSWIFT"].Value = "HDFCINBBXXX";
-                invoiceReport.Parameters["pBankName"].Value = "HDFC Bank";
-                invoiceReport.Parameters["pBankAddress"].Value = "Sanjay Place,Agra-282002,UP,India";
-
-                AccountName = "ATF LABS PRIVATE LIMITED";
-                AccountNumber = "50200059520889";
-                IFSC = "HDFC0000121";
-                SWIFT = "HDFCINBBXXX";
-                BankName = "HDFC Bank"; 
-                BankAddress = "Sanjay Place,Agra-282002,UP,India";
-            }
-
-            if (comboBank.Text == "Yes Bank")
-            {
-                invoiceReport.Parameters["pAccountName"].Value = "ATF Labs Pvt Ltd";
-                invoiceReport.Parameters["pAccountNumber"].Value = "5063700002797";
-                invoiceReport.Parameters["pIFSC"].Value = "YESB0000050";
-                invoiceReport.Parameters["pSWIFT"].Value = "YESBINBBXXX";
-                invoiceReport.Parameters["pBankName"].Value = "Yes Bank Ltd.";
-                invoiceReport.Parameters["pBankAddress"].Value = "Sanjay Place,Agra";
-
-                AccountName = "ATF Labs Pvt Ltd";
-                AccountNumber = "5063700002797";
-                IFSC = "YESB0000050";
-                SWIFT = "YESBINBBXXX";
-                BankName = "Yes Bank Ltd.";
-                BankAddress = "Sanjay Place,Agra";
-            }
-
-            InvoiceReport report = new InvoiceReport();
-            PdfExportOptions pdfOptions = report.ExportOptions.Pdf;
-            // Specify the pages to export.
-            pdfOptions.PageRange = "1, 3-5";
-
-            // Specify the quality of exported images.
-            pdfOptions.ConvertImagesToJpeg = false;
-            pdfOptions.ImageQuality = PdfJpegImageQuality.Medium;
-
-            // Specify the PDF/A-compatibility.
-            pdfOptions.PdfACompatibility = PdfACompatibility.PdfA3b;
-
-            // Specify the document options.
-            pdfOptions.DocumentOptions.Application = "Test Application";
-            pdfOptions.DocumentOptions.Author = "DX Documentation Team";
-            pdfOptions.DocumentOptions.Keywords = "DevExpress, Reporting, PDF";
-            pdfOptions.DocumentOptions.Producer = Environment.UserName.ToString();
-            pdfOptions.DocumentOptions.Subject = "Document Subject";
-            pdfOptions.DocumentOptions.Title = "Document Title";
-
-            IList<string> result = pdfOptions.Validate();
-
-            if (result.Count > 0)
-                Console.WriteLine(String.Join(Environment.NewLine, result));
-            else
-            {
-                report.CreateDocument();
-                if (ExportOptionsTool.EditExportOptions(pdfOptions, report.PrintingSystem)
-                    == DialogResult.OK)
-                {
-                    report.ExportToPdf("C:\\Users\\devan\\Downloads\\result.pdf", pdfOptions);
-                    // ...
-                }
-            }
-
-           *//* using (Print print = new Print())
-            {
-                print.PrintInvoice(your_company,client_name, your_gst, your_lut, your_cin,your_email,client_company,client_address,client_gst,amount,CGSTstring,SGSTstring,IGSTstring,SGSTText,CGSTText,IGSTText,
-                    AccountName,AccountNumber,IFSC,SWIFT,BankName,BankAddress);
-                print.ShowDialog();
-            }*/
 
         }
 
@@ -1309,7 +1129,9 @@ namespace CEM
             string invoice_number_string = "FY23-24/"+invoice_number;
             
             DateTime invoice_date = DateTime.Parse(dateTimePicker1.Text);
-            
+            string originalDate = invoice_date.ToString();
+            DateTime dt = DateTime.ParseExact(originalDate, "dd-MMM-yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            string reformattedDate = dt.ToString("MMM dd, yyyy", CultureInfo.InvariantCulture);
 
             string client_address = txtclientaddress.Text;
             string client_country = txtclientcountry.Text;
@@ -1332,6 +1154,10 @@ namespace CEM
             double SGST = (Subtotoal * 9) / 100;
             double IGST = (Subtotoal * 18) / 100;
             double total = 0;
+
+            //For Foreign client
+            double GST = (Subtotoal * 12) / 100;
+            double AMOUNT = (Subtotoal * 88) / 100;
             if (rbtnwithinstate.Checked == true)
             {
                 total = Subtotoal + SGST + CGST;
@@ -1340,10 +1166,11 @@ namespace CEM
             {
                 total = Subtotoal + IGST;
             }
-            else if (rbtnforeign.Checked == true)
+            /*else if (rbtnforeign.Checked == true)
             {
-                total = Subtotoal + IGST;
-            }
+                total = (Subtotoal * 88) / 100;
+            }*/
+
 
             //Formatting Numbers
             CultureInfo hindi = new CultureInfo("hi-IN");
@@ -1357,7 +1184,14 @@ namespace CEM
 
             string formattedSGST = string.Format(hindi, "{0:#,#}", SGST);
 
+            string formattedIGST = string.Format(hindi, "{0:#,#}", IGST);
 
+            string formattedAMOUNT = string.Format(hindi, "{0:#,#}", AMOUNT);
+
+            string formattedGST = string.Format(hindi, "{0:#,#}", GST);
+
+
+           
 
             if (comboBank.Text=="HDFC Bank")
             {
@@ -1495,9 +1329,25 @@ namespace CEM
             Paragraph CGSTParagraph = null;
             Paragraph SGSTParagraph = null;
             Paragraph IGSTParagraph = null;
+
+            Paragraph AMOUNTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                                .Add("" + formattedAMOUNT).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+            Paragraph GSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                                .Add("" + formattedGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+            Paragraph ForeignTotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                               .Add("" + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+            Paragraph TotalAmountParagraph = new Paragraph().Add(new Text("\u20B9").SetFontSize(14).SetFont(devnagariFont))
+                                            .SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+
+            Paragraph TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont3).SetFontSize(13f))
+                                                .Add(" " + formattedSubtotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+
             if (combocurrency.SelectedIndex == 0)
             {
-                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(helveticaBold).SetFont(devnagariFont3).SetFontSize(14)).SetFontSize(11.5f).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
+                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont3).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
                 TotalSubtotalParagraph = new Paragraph().Add(new Text("\u20B9").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
                 TotalSubtotalParagraph2 = new Paragraph().Add(new Text("\u20B9").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
 
@@ -1506,278 +1356,410 @@ namespace CEM
                 SGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2)).Add(" " + formattedSGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
                 IGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2)).Add(" " + IGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
             }
+
             if (combocurrency.SelectedIndex == 1)
             {
-                TotalParagraph = new Paragraph().Add(new Text("$")).Add(" " + total).SetTextAlignment(TextAlignment.LEFT);
-                SubtotalParagraph = new Paragraph().Add(new Text("$")).Add(" " + Subtotoal).SetTextAlignment(TextAlignment.LEFT);
-                CGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + CGST).SetTextAlignment(TextAlignment.LEFT);
-                SGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + SGST).SetTextAlignment(TextAlignment.LEFT);
-                IGSTParagraph = new Paragraph().Add(new Text("$")).Add(" " + IGST).SetTextAlignment(TextAlignment.LEFT);
+                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont3).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+                TotalSubtotalParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+                TotalSubtotalParagraph2 = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
+
+                SubtotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                CGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + formattedCGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                SGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + formattedSGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                IGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + IGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
             }
 
 
-
-
-
-
-
-
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            string pdfPath = @"F:\Invoices\" + $"{client_name}_invoice_{reformattedDate}.pdf";
+            try
             {
-                string pdfPath = saveFileDialog.FileName;
 
-                try
+                // Set a custom page width and height
+                float pageWidth = 595f;
+                float pageHeight = 830f;
+
+
+                iText.Kernel.Pdf.PdfWriter write = new iText.Kernel.Pdf.PdfWriter(pdfPath);
+                PdfDocument pdf = new PdfDocument(write);
+
+                // Set the custom page size
+                pdf.GetDefaultPageSize().SetWidth(pageWidth);
+                pdf.GetDefaultPageSize().SetHeight(pageHeight);
+
+
+                iText.Layout.Document document = new iText.Layout.Document(pdf);
+
+
+                document.SetLeftMargin(0);
+
+
+
+                float col11 = 300f;
+                float col12 = 300f;
+                float[] colWidth1 = { col11, col12 };
+                Table table1 = new Table(colWidth1)
+
+                    .SetWidth(100)
+                    .SetMarginLeft(25)
+                    .SetWidth(595);
+
+
+                Cell cell11 = new Cell(1, 1)
+
+                    .SetFontSize(22)
+                    .SetBold()
+                    .SetBorder(Border.NO_BORDER)
+                    .Add(new Paragraph("TAX INVOICE"));
+                Cell cell12 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetPaddingLeft(120)
+
+                    .Add(CompanyLogo);
+
+                table1.AddCell(cell11);
+                table1.AddCell(cell12);
+
+                float col2 = 595f;
+                float[] colwidth2 = { col2, col2 };
+                Table table2 = new Table(colwidth2)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetMarginLeft(25)
+
+                    .SetMarginTop(20);
+                Cell cell21 = new Cell(1, 2)
+                    .SetBorder(Border.NO_BORDER)
+
+                    .Add(new Paragraph().SetFontSize(16.5f).Add(combocompany.Text).SetFont(robotRegularFont).SetFixedLeading(15))
+                    .Add(new Paragraph().SetFontSize(9.5f).Add("Hari Parwat Crossing, Agra - UP, India").SetFontColor(ColorConstants.DARK_GRAY));
+
+
+
+                table2.AddCell(cell21);
+
+
+
+                float col31 = 15f;
+                float col32 = 300f;
+                float[] colwidth3 = { col31, col32 };
+                Table table3 = new Table(colwidth3)
+
+                    .SetMarginLeft(25)
+                    .SetMarginTop(8)
+                    .SetMarginBottom(4);
+                Cell cell31 = new Cell(1, 2)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetFontColor(ColorConstants.DARK_GRAY)
+                    .SetFontSize(9)
+                    .SetFont(robotRegularFont)
+                .Add(new Paragraph().Add("GST: " + your_gst).SetFixedLeading(15))
+                .Add(new Paragraph().Add("LUT: " + your_lut).SetFixedLeading(15))
+                .Add(new Paragraph().Add("CIN: " + your_cin).SetFixedLeading(15));
+
+
+                Cell cell32 = new Cell(1, 1)
+
+                    .SetBorder(Border.NO_BORDER)
+                    .SetFontSize(9)
+                    .SetPaddingRight(0)
+                    .SetPaddingTop(6)
+                     .SetFontColor(ColorConstants.DARK_GRAY)
+                    .Add(new Paragraph("Email: ").SetFont(robotRegularFont));
+                Cell cell33 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetFontSize(9)
+                    .SetPaddingTop(6)
+                    .SetFontColor(ColorConstants.DARK_GRAY)
+                      .SetFont(customFont)
+                    .Add(new Paragraph(comboemail.Text));
+                table3.AddCell(cell31);
+                table3.AddCell(cell32);
+                table3.AddCell(cell33);
+
+                iText.Kernel.Colors.Color customColor = new DeviceRgb(222, 238, 237);
+
+                float col41 = 475f;
+                float col42 = 120f;
+                float[] colwidth4 = { col41, col42 };
+                Table table4 = new Table(colwidth4)
+
+                     .SetWidth(595)
+
+                    .SetHeight(80)
+                    .SetFontSize(8)
+                    .SetBackgroundColor(customColor);
+
+                Cell cell41 = new Cell(1, 1)
+                     .SetBorder(Border.NO_BORDER)
+                    .SetPaddingLeft(25)
+                    .SetPaddingTop(19)
+                    .SetFontSize(10)
+                    .Add(new Paragraph("Invoice No: " + "FY23-24/" + txtinvoicenumber.Text).SetFixedLeading(20).SetFont(boldFont))
+                    .Add(new Paragraph("Invoice Date: " + reformattedDate).SetFixedLeading(20).SetFont(boldFont));
+
+                Cell cell42 = null;
+                if (rbtnforeign.Checked == true)
                 {
-
-                    // Set a custom page width and height
-                    float pageWidth = 595f;
-                    float pageHeight = 800f;
-
-
-                    iText.Kernel.Pdf.PdfWriter write = new iText.Kernel.Pdf.PdfWriter(pdfPath);
-                    PdfDocument pdf = new PdfDocument(write);
-
-                    // Set the custom page size
-                    pdf.GetDefaultPageSize().SetWidth(pageWidth);
-                    pdf.GetDefaultPageSize().SetHeight(pageHeight);
-
-
-                    iText.Layout.Document document = new iText.Layout.Document(pdf);
-
-
-                    document.SetLeftMargin(0);
-
-
-
-                    float col11 = 300f;
-                    float col12 = 300f;
-                    float[] colWidth1 = { col11, col12 };
-                    Table table1 = new Table(colWidth1)
-
-                        .SetWidth(100)
-                        .SetMarginLeft(25)
-                        .SetWidth(595);
-
-
-                    Cell cell11 = new Cell(1, 1)
-
-                        .SetFontSize(22)
-                        .SetBold()
-                        .SetBorder(Border.NO_BORDER)
-                        .Add(new Paragraph("TAX INVOICE"));
-                    Cell cell12 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetPaddingLeft(120)
-
-                        .Add(CompanyLogo);
-
-                    table1.AddCell(cell11);
-                    table1.AddCell(cell12);
-
-                    float col2 = 595f;
-                    float[] colwidth2 = { col2, col2 };
-                    Table table2 = new Table(colwidth2)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetMarginLeft(25)
-                        
-                        .SetMarginTop(20);
-                    Cell cell21 = new Cell(1, 2)
-                        .SetBorder(Border.NO_BORDER)
-                       
-                        .Add(new Paragraph().SetFontSize(16.5f).Add(combocompany.Text).SetFont(robotRegularFont).SetFixedLeading(15))
-                        .Add(new Paragraph().SetFontSize(9.5f).Add("Hari Parwat Crossing, Agra - UP, India").SetFontColor(ColorConstants.DARK_GRAY)); 
-                      
-                    
-                      
-                    table2.AddCell(cell21);
-                    
-
-
-                    float col31 = 15f;
-                    float col32 = 300f;
-                    float[] colwidth3 = { col31, col32 };
-                    Table table3 = new Table(colwidth3)
-                        
-                        .SetMarginLeft(25)
-                        .SetMarginTop(8)
-                        .SetMarginBottom(4);
-                    Cell cell31 = new Cell(1, 2)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetFontColor(ColorConstants.DARK_GRAY)
-                        .SetFontSize(9)
-                        .SetFont(robotRegularFont)
-                    .Add(new Paragraph().Add("GST: " + your_gst).SetFixedLeading(15))
-                    .Add(new Paragraph().Add("LUT: " + your_lut).SetFixedLeading(15))
-                    .Add(new Paragraph().Add("CIN: " + your_cin).SetFixedLeading(15));
-                   
-
-                    Cell cell32 = new Cell(1, 1)
-
-                        .SetBorder(Border.NO_BORDER)
-                        .SetFontSize(9)
-                        .SetPaddingRight(0)
-                        .SetPaddingTop(6)
-                         .SetFontColor(ColorConstants.DARK_GRAY)
-                        .Add(new Paragraph("Email: ").SetFont(robotRegularFont));
-                    Cell cell33 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetFontSize(9)
-                        .SetPaddingTop(6)
-                        .SetFontColor(ColorConstants.DARK_GRAY)
-                          .SetFont(customFont)
-                        .Add(new Paragraph("devanshu.official09@gmail.com"));
-                    table3.AddCell(cell31);
-                    table3.AddCell(cell32);
-                    table3.AddCell(cell33);
-
-                    iText.Kernel.Colors.Color customColor = new DeviceRgb(222, 238, 237);
-
-                    float col41 = 475f;
-                    float col42 = 120f;
-                    float[] colwidth4 = { col41, col42 };
-                    Table table4 = new Table(colwidth4)
-
-                         .SetWidth(595)
-                        
-                        .SetHeight(80)
-                        .SetFontSize(8)
-                        .SetBackgroundColor(customColor);
-
-                    Cell cell41 = new Cell(1, 1)
-                         .SetBorder(Border.NO_BORDER)
-                        .SetPaddingLeft(25)
-                        .SetPaddingTop(19)
-                        .SetFontSize(10)
-                        .Add(new Paragraph("Invoice No: " + "FY23-24/" + txtinvoicenumber.Text).SetFixedLeading(20).SetFont(boldFont))
-                        .Add(new Paragraph("Invoice Date: " + "reformattedDate").SetFixedLeading(20).SetFont(boldFont));
-                    Cell cell42 = new Cell(1, 1)
-
-
-
-                        .SetBorder(Border.NO_BORDER)
+                    if (combocurrency.SelectedIndex == 0)
+                    {
+                        cell42 = new Cell(1, 1)
+                            .SetBorder(Border.NO_BORDER)
                         .SetPaddingTop(19)
 
                         .SetTextAlignment(TextAlignment.LEFT)
 
-                        .Add(new Paragraph().Add(TotalParagraph).Add(new Text(" INR")).SetFont(helveticaBold).SetFixedLeading(17).SetFontSize(11.5f).SetFont(helveticaBold))
-                        .Add(new Paragraph().Add("AMOUNT").SetFont(totalAmountPathFont).SetFixedLeading(17).SetFontSize(13f));
-                          
-                    table4.AddCell(cell41);
-                    table4.AddCell(cell42);
+                        .Add(new Paragraph().Add(TotalAmountParagraphBold).Add(new Text(" INR").SetFontSize(12f).SetFont(helveticaBold)))
+                        .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                    }
+                    else if (combocurrency.SelectedIndex == 1)
+                    {
+                        cell42 = new Cell(1, 1)
+                           .SetBorder(Border.NO_BORDER)
+                       .SetPaddingTop(19)
 
-                    float col51 = 300f;
-                    float col52 = 300f;
-                    float[] colwidth5 = { col51, col52 };
-                    Table table5 = new Table(colwidth5)
-                         .SetMarginTop(25);
+                       .SetTextAlignment(TextAlignment.LEFT)
 
-                    Cell cell51 = new Cell(1, 2)
-                         .SetPaddingLeft(25)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetFont(boldFont)
-                        .SetFontColor(ColorConstants.BLACK)
-                        .Add(new Paragraph().Add("BILL TO:").SetFont(helveticaSemiBoldFont)).SetFontSize(13)
-                        .Add(new Paragraph().SetFixedLeading(15).Add(comboclientname.Text).SetFontSize(10).SetPaddingTop(6))
-                        .Add(new Paragraph().SetFixedLeading(15).Add(txtclientcompany.Text).SetFontSize(10))
-                        .Add(new Paragraph().SetFixedLeading(15).Add(txtclientaddress.Text+", " +txtclientcountry.Text ).SetFontSize(10))
-                        .Add(new Paragraph().SetFixedLeading(15).Add("GST: " + client_gst).SetFontSize(10));
-                    table5.AddCell(cell51);
+                       .Add(new Paragraph().Add(TotalAmountParagraphBold).Add(new Text("").SetFontSize(12f).SetFont(helveticaBold)))
+                       .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                    }
 
-                    float col61 = 300f;
-                    float col62 = 300f;
-                    float[] colwidth6 = { col61, col62 };
-                    Table table6 = new Table(colwidth6)
+                }
+                else
+                {
+                    if (combocurrency.SelectedIndex == 0)
+                    {
+                        cell42 = new Cell(1, 1)
+                            .SetBorder(Border.NO_BORDER)
+                        .SetPaddingTop(19)
 
-                         .SetWidth(595)
-                         .SetMarginTop(20)
-                        .SetHeight(25)
-                        .SetFontSize(8)
-                        .SetBackgroundColor(customColor);
+                        .SetTextAlignment(TextAlignment.LEFT)
 
-                    Cell cell61 = new Cell(1, 1)
+                        .Add(new Paragraph().Add(TotalParagraph).Add(new Text(" INR").SetFontSize(12f).SetFont(helveticaBold)))
+                        .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                    }
+                    else if (combocurrency.SelectedIndex == 1)
+                    {
+                        cell42 = new Cell(1, 1)
+                           .SetBorder(Border.NO_BORDER)
+                       .SetPaddingTop(19)
+
+                       .SetTextAlignment(TextAlignment.LEFT)
+
+                       .Add(new Paragraph().Add(TotalParagraph).Add(new Text("").SetFontSize(12f).SetFont(helveticaBold)))
+                       .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                    }
+
+                }
+               
+
+
+
+
+                table4.AddCell(cell41);
+                table4.AddCell(cell42);
+
+                float col51 = 300f;
+                float col52 = 300f;
+                float[] colwidth5 = { col51, col52 };
+                Table table5 = new Table(colwidth5)
+                     .SetMarginTop(8);
+
+                Cell cell51 = new Cell(1, 2)
+                     .SetPaddingLeft(25)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetFont(boldFont)
+                    .SetFontColor(ColorConstants.BLACK)
+                    .Add(new Paragraph().Add("BILL TO:").SetFont(helveticaSemiBoldFont)).SetFontSize(13)
+                    .Add(new Paragraph().SetFixedLeading(12).Add(comboclientname.Text).SetFontSize(10).SetPaddingTop(0))
+                    .Add(new Paragraph().SetFixedLeading(15).Add(txtclientcompany.Text).SetFontSize(10))
+                    .Add(new Paragraph().SetFixedLeading(15).Add(txtclientaddress.Text + ", " + txtclientcountry.Text).SetFontSize(10))
+                    .Add(new Paragraph().SetFixedLeading(15).Add("GST: " + client_gst).SetFontSize(10));
+                table5.AddCell(cell51);
+
+                float col61 = 200f;
+                float col62 = 175f;
+                float col63 = 116f;
+                float col64 = 104f;
+                float[] colwidth6 = { col61, col62,col63,col64 };
+                Table table6 = new Table(colwidth6)
+
+                     .SetWidth(595)
+                     .SetMarginTop(27)
+                    .SetHeight(25)
+                    .SetFontSize(9)
+                    .SetBackgroundColor(customColor);
+
+                Cell cell61 = new Cell(1, 1)
+                     .SetBorder(Border.NO_BORDER)
+                    .SetPaddingLeft(25)
+                    .SetPaddingTop(7)
+                    .SetFontSize(8)
+                    .Add(new Paragraph("ITEMS AND DESCRIPTION"));
+
+                Cell cell62 = null;
+                Cell cell63 = null;
+                Cell cell64 = null;
+                if (rbtnforeign.Checked == true)
+                {
+                    cell62 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                     .SetPaddingTop(7)
+                    //.SetBorderBottom(new SolidBorder(0.5f))
+                    .SetPaddingLeft(25)
+                    .SetFontSize(9)
+                    .Add(new Paragraph("AMOUNT"));
+
+                    cell63 = new Cell(1, 1)
                          .SetBorder(Border.NO_BORDER)
+                         .SetPaddingTop(7)
+                        //.SetBorderBottom(new SolidBorder(0.5f))
                         .SetPaddingLeft(25)
-                        .SetPaddingTop(7)
-                        .SetFontSize(10)
-                        .Add(new Paragraph("ITEMS AND DESCRIPTION"));
-
-
-                    Cell cell62 = new Cell(1, 1)
-
-
-
-                        .SetBorder(Border.NO_BORDER)
-                        .SetPaddingTop(7)
                         .SetFontSize(9)
-                        .SetTextAlignment(TextAlignment.RIGHT)
-                        .SetPaddingRight(25)
-                        .Add(new Paragraph().Add("AMOUNT").SetFontSize(10).SetPaddingRight(25).SetFont(boldFont));
-                    table6.AddCell(cell61);
-                    table6.AddCell(cell62);
-
-                    float col71 = 200f;
-                    float col72 = 195f;
-                    float col73 = 106f;
-                    float col74 = 94f;
-                    float[] colwidth7 = { col71, col72, col73, col74 };
-                    Table table7 = new Table(colwidth7)
-                        .SetMarginTop(5)
-
-                         .SetWidth(595)
-
-                        .SetFontSize(8);
+                        .Add(new Paragraph("GST"));
+                    cell64 = new Cell(1, 1)
 
 
-                    Cell cell71 = new Cell(1, 1)
 
+                   .SetBorder(Border.NO_BORDER)
+                   .SetPaddingTop(7)
+                   .SetFontSize(9)
+                   .SetTextAlignment(TextAlignment.LEFT)
+                   
+                   .Add(new Paragraph().Add("TOTAL AMOUNT").SetFontSize(9).SetFont(boldFont));
+                }
+                else
+                {
+                    cell62 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                    //.SetBorderBottom(new SolidBorder(0.5f))
+                    .SetPaddingLeft(25)
+                    .SetFontSize(10);
+
+                    cell63 = new Cell(1, 1)
+                        .SetBorder(Border.NO_BORDER)
+                        //.SetBorderBottom(new SolidBorder(0.5f))
+                        .SetPaddingLeft(25)
+                        .SetFontSize(10);
+
+                    cell64 = new Cell(1, 1)
+
+
+
+                  .SetBorder(Border.NO_BORDER)
+                  .SetPaddingTop(7)
+                  .SetFontSize(9)
+                  .SetTextAlignment(TextAlignment.RIGHT)
+                  .SetPaddingRight(25)
+                  .Add(new Paragraph().Add("AMOUNT").SetFontSize(10).SetPaddingRight(25).SetFont(boldFont));
+                }
+                
+
+               
+                table6.AddCell(cell61);
+                table6.AddCell(cell62);
+                table6.AddCell(cell63);
+                table6.AddCell(cell64);
+
+                float col71 = 200f;
+                float col72 = 175f;
+                float col73 = 116f;
+                float col74 = 104f;
+                float[] colwidth7 = { col71, col72, col73, col74 };
+                Table table7 = new Table(colwidth7)
+                    .SetMarginTop(5)
+
+                     .SetWidth(595)
+
+                    .SetFontSize(8);
+
+
+                Cell cell71 = new Cell(1, 1)
+
+                    .SetBorder(Border.NO_BORDER)
+                    .SetBorderBottom(new SolidBorder(0.5f))
+                    .SetPaddingLeft(25)
+                    .SetFontSize(10)
+                    .Add(new Paragraph().Add(txtitemname.Text).SetStrokeColor(ColorConstants.BLACK).SetFixedLeading(12))
+                    .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8).SetFontColor(ColorConstants.DARK_GRAY));
+
+                Cell cell72 = null;
+                Cell cell73 = null;
+                Cell cell74 = null;
+                if (rbtnforeign.Checked == true)
+                {
+                    cell72 = new Cell(1, 1)
+                   .SetBorder(Border.NO_BORDER)
+                   .SetBorderBottom(new SolidBorder(0.5f))
+                   .SetPaddingLeft(20)
+                   .Add(AMOUNTParagraph.SetFixedLeading(13));
+
+                    cell73 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderBottom(new SolidBorder(0.5f))
-                        .SetPaddingLeft(25)
-                        .SetFontSize(10)
-                        .Add(new Paragraph().Add(txtitemname.Text).SetStrokeWidth(2).SetStrokeColor(ColorConstants.BLACK))
-                        .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8));
+                        .SetPaddingLeft(20)
+                        .Add(GSTParagraph.SetFixedLeading(13));
 
-                    Cell cell72 = new Cell(1, 1)
+
+
+                    cell74 = new Cell(1, 1)
+
+
+                         .SetBorder(Border.NO_BORDER)
+                         .SetBorderBottom(new SolidBorder(0.5f))
+                        .Add(ForeignTotalParagraph.SetFixedLeading(13));
+                }
+                else
+                {
+                    cell72 = new Cell(1, 1)
+                   .SetBorder(Border.NO_BORDER)
+                   .SetBorderBottom(new SolidBorder(0.5f))
+                   .SetPaddingLeft(25)
+                   .SetFontSize(10);
+
+                    cell73 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderBottom(new SolidBorder(0.5f))
                         .SetPaddingLeft(25)
                         .SetFontSize(10);
 
-                    Cell cell73 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetBorderBottom(new SolidBorder(0.5f))
-                        .SetPaddingLeft(25)
-                        .SetFontSize(10);
 
 
-
-                    Cell cell74 = new Cell(1, 1)
+                    cell74 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderBottom(new SolidBorder(0.5f))
 
                         .SetFontSize(12.5f)
-                        .Add(TotalSubtotalParagraph);
-                    table7.AddCell(cell71);
-                    table7.AddCell(cell72);
-                    table7.AddCell(cell73);
-                    table7.AddCell(cell74);
+                        .Add(TotalSubtotalParagraph.SetFixedLeading(13));
+                }
+                
+                table7.AddCell(cell71);
+                table7.AddCell(cell72);
+                table7.AddCell(cell73);
+                table7.AddCell(cell74);
 
-                    float col81 = 200f;
-                    float col82 = 171f;
-                    float col83 = 110f;
-                    float col84 = 94f;
-                    float[] colwidth8 = { col81, col82, col83, col84 };
-                    Table table8 = new Table(colwidth8)
 
-                         .SetWidth(595)
 
-                        //.SetHeight(35)
-                        .SetFontSize(8);
+                float col81 = 200f;
+                float col82 = 175f;
+                float col83 = 116f;
+                float col84 = 104f;
+                float[] colwidth8 = { col81, col82, col83, col84 };
+                Table table8 = null;
+                if (rbtnforeign.Checked == true)
+                {
+                    table8 = new Table(1000);
+                }
+                else
+                {
+                    table8 = new Table(colwidth8)
+
+                     .SetWidth(595)
+
+                    //.SetHeight(35)
+                    .SetFontSize(8);
 
 
                     Cell cell81 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
+                        //.SetBorder(Border.NO_BORDER)
 
                         .SetPaddingLeft(25)
 
@@ -1785,7 +1767,7 @@ namespace CEM
                         .Add(new Paragraph(""));
 
                     Cell cell82 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
+                        //.SetBorder(Border.NO_BORDER)
                         .SetPaddingTop(10)
                         .SetFontSize(10)
                         .SetTextAlignment(TextAlignment.LEFT);
@@ -1793,26 +1775,26 @@ namespace CEM
                     if (rbtninterstate.Checked == true)
                     {
                         cell83 = new Cell(1, 1)
-                            .SetPaddingLeft(19)
+
                         .SetBorder(Border.NO_BORDER)
 
                         //.SetFontSize(10)
-
-                        .SetPaddingRight(25)
                         .SetFont(boldFont2)
-                        .Add(new Paragraph().Add("Subtotal          ").SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
-                         .Add(new Paragraph().Add("IGST(18%)            ").SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+                        .SetPaddingRight(25)
+
+                        .Add(new Paragraph().Add("Subtotal          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
+                        .Add(new Paragraph().Add("IGST(18%)          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
                     }
                     if (rbtnwithinstate.Checked == true)
                     {
                         cell83 = new Cell(1, 1)
-                           
+
                         .SetBorder(Border.NO_BORDER)
 
                         //.SetFontSize(10)
                         .SetFont(boldFont2)
                         .SetPaddingRight(25)
-                        
+
                         .Add(new Paragraph().Add("Subtotal          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
                         .Add(new Paragraph().Add("CGST(9%)          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
                         .Add(new Paragraph().Add("SGST(9%)          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
@@ -1821,29 +1803,47 @@ namespace CEM
                     }
                     if (rbtnforeign.Checked == true)
                     {
-                        cell83 = new Cell(1, 1)
-                             .SetPaddingLeft(19)
-                        .SetBorder(Border.NO_BORDER)
 
-                        //.SetFontSize(9)
-                        .SetFont(boldFont2)
-                        .SetPaddingRight(25)
-                        .Add(new Paragraph().Add("Subtotal          ").SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT))
-                         .Add(new Paragraph().Add("IGST(18%)            ").SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+                        cell83 = new Cell(1, 1)
+
+                       //.SetBorder(Border.NO_BORDER)
+
+                       //.SetFontSize(10)
+                       .SetFont(boldFont2)
+                       .SetPaddingRight(25);
 
                     }
+
+                    /* if (rbtnnogst.Checked == true)
+                     {
+
+                         cell83 = new Cell(1, 1)
+
+                        .SetBorder(Border.NO_BORDER)
+
+
+                        .SetFont(boldFont2)
+                        .SetPaddingRight(25)
+
+                        .Add(new Paragraph().Add("Subtotal          ").SetFont(devnagariFont2).SetFixedLeading(15).SetFontSize(9f).SetPaddingRight(25).SetTextAlignment(TextAlignment.LEFT));
+
+
+                     }*/
 
                     Cell cell84 = null;
                     if (rbtninterstate.Checked == true)
                     {
+
                         cell84 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
 
-                        .SetFontSize(9f)
+                        .SetFontSize(7f)
                         .SetTextAlignment(TextAlignment.LEFT)
                         .SetPaddingRight(25)
-                        .SetFont(boldFont2)
+
+                        //.SetFont(boldFont2)
                         .Add(SubtotalParagraph)
+
                         .Add(IGSTParagraph);
                     }
 
@@ -1855,7 +1855,7 @@ namespace CEM
                         .SetFontSize(7f)
                         .SetTextAlignment(TextAlignment.LEFT)
                         .SetPaddingRight(25)
-                        
+
                         //.SetFont(boldFont2)
                         .Add(SubtotalParagraph)
                         .Add(CGSTParagraph)
@@ -1865,215 +1865,267 @@ namespace CEM
                     }
                     if (rbtnforeign.Checked == true)
                     {
-                        cell84 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
 
-                        .SetFontSize(9f)
-                        .SetTextAlignment(TextAlignment.LEFT)
-                        .SetPaddingRight(25)
-                         .SetFont(boldFont2)
-                        .Add(SubtotalParagraph)
-                         .Add(IGSTParagraph);
+                        cell84 = new Cell(1, 1)
+                         //.SetBorder(Border.NO_BORDER)
+
+                         .SetFontSize(7f)
+                         .SetTextAlignment(TextAlignment.LEFT)
+                         .SetPaddingRight(25);
+                        //.Add(TotalParagraph);
+
+                        //.SetFont(boldFont2)
+
 
                     }
+
+                    /*if (rbtnnogst.Checked == true)
+                    {
+
+                        cell84 = new Cell(1, 1)
+                         .SetBorder(Border.NO_BORDER)
+
+                         .SetFontSize(7f)
+                         .SetTextAlignment(TextAlignment.LEFT)
+                         .SetPaddingRight(25);
+
+                         //.SetFont(boldFont2)
+
+
+
+
+                    }*/
                     table8.AddCell(cell81);
                     table8.AddCell(cell82);
                     table8.AddCell(cell83);
                     table8.AddCell(cell84);
-
-                    float col91 = 200f;
-                    float col92 = 171f;
-                    float col93 = 110f;
-                    float col94 = 94f;
-                    float[] colwidth9 = { col91, col92, col93, col94 };
-                    Table table9 = new Table(colwidth9)
-
-                         .SetWidth(595)
-
-                        //.SetHeight(35)
-                        .SetFontSize(8);
-
-
-                    Cell cell91 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetPaddingLeft(25)
-
-                        .SetFontSize(9)
-                        .Add(new Paragraph(""));
-
-                    Cell cell92 = new Cell(1, 1)
-                       .SetBorder(Border.NO_BORDER)
-                       .SetPaddingLeft(25)
-
-                       .SetFontSize(9)
-                       .Add(new Paragraph(""));
-                    Cell cell93 = new Cell(1, 1)
-                       
-                       .SetBorder(Border.NO_BORDER)
-                        .SetBorderTop(new SolidBorder(0.5f))
-
-
-                       .SetFontSize(12)
-                       .Add(new Paragraph("TOTAL")).SetTextAlignment(TextAlignment.LEFT);
-                    Cell cell94 = new Cell(1, 1)
-
-
-
-                        .SetBorder(Border.NO_BORDER)
-                        .SetBorderTop(new SolidBorder(0.5f))
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.LEFT)
-                        .SetPaddingRight(25)
-
-                        .Add(TotalSubtotalParagraph2);
-                    table9.AddCell(cell91);
-                    table9.AddCell(cell92);
-                    table9.AddCell(cell93);
-                    table9.AddCell(cell94);
-
-                    float col9A = 300f;
-                    float[] colwidth9A = { col9A };
-                    Table table9A = new Table(300)
-                         .SetMarginTop(26);
-                    Cell cell9A = new Cell(1, 1)
-
-                       .SetBorder(Border.NO_BORDER)
-                         .SetPaddingLeft(25)
-                        
-                       .Add(BankIcon);
-                    table9A.AddCell(cell9A);
-
-
-                    float col102 = 120f;
-                    float col103 = 475f;
-                    float[] colwidth10 = { col102,col103 };
-                    Table table10 = new Table(colwidth10);
-                       
-                         //.SetMarginTop();
-
-                   
-
-
-
-                    Cell cell102 = new Cell(1, 1)
-                         .SetBorder(Border.NO_BORDER)
-                          .SetPaddingLeft(25)
-                        
-                          //.SetFontColor(ColorConstants.DARK_GRAY)
-                          .SetFontSize(9)
-                           //.SetPaddingRight(0)
-                        //.SetFontColor(ColorConstants.DARK_GRAY)
-                        //.SetFont(boldFont)
-                        .SetFont(customFont)
-                      
-                         .SetFontSize(10f)
-                        .Add(new Paragraph().SetFixedLeading(15).Add("Account Name   ").SetFontColor(ColorConstants.DARK_GRAY))
-                        .Add(new Paragraph().SetFixedLeading(15).Add("Account Number   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                        .Add(new Paragraph().SetFixedLeading(15).Add("IFSC Code   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                        .Add(new Paragraph().SetFixedLeading(15).Add("SWIFT Code   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                        .Add(new Paragraph().SetFixedLeading(15).Add("Bank Name   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                        .Add(new Paragraph().SetFixedLeading(15).Add("Bank Address   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY);
-
-                    Cell cell103 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                         .SetPaddingLeft(0)
-                         //.SetFontColor(ColorConstants.DARK_GRAY)
-                         .SetFontSize(9)
-                       //.SetFontColor(ColorConstants.DARK_GRAY)
-                       //.SetFont(boldFont)
-                       .SetFont(customFont)
-
-                        .SetFontSize(10f)
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+account_holder_name).SetFontColor(ColorConstants.DARK_GRAY))
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+account_number)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+ifsc)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+swift)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+bank_name)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
-                       .Add(new Paragraph().SetFixedLeading(15).Add(": "+bank_address)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY);
-                  
-                    table10.AddCell(cell102);
-                    table10.AddCell(cell103);
-
-
-
-
-
-                    float col111 = 800f;
-                    float col112 = 300f;
-                    float[] colwidth11 = { col111, col112 };
-                    Table table11 = new Table(colwidth11)
-                          .SetFixedPosition(0, 0, 595)
-                         .SetWidth(595)
-
-
-                        .SetFontSize(8)
-                        .SetBackgroundColor(customColor);
-
-                    Cell cell111 = new Cell(1, 2)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetHeight(13)
-
-                        .SetPaddingTop(7)
-
-                        .SetFontSize(13)
-                        .SetTextAlignment(TextAlignment.CENTER)
-                        .SetPaddingBottom(0)
-                        .Add(new Paragraph().Add("*Thank you for your business*").SetFontSize(8));
-
-
-
-
-                    Cell cell112 = new Cell(1, 1)
-                        .SetBorder(Border.NO_BORDER)
-                        .SetHeight(20)
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.RIGHT)
-                        .SetMarginBottom(0)
-                        .Add(new Paragraph().Add("*This is a Computer generated invoice and does not require signature*").SetFontSize(7).SetFontColor(ColorConstants.DARK_GRAY));
-                    Cell cell113 = new Cell(1, 1)
-                       .SetBorder(Border.NO_BORDER)
-
-                        .SetMarginBottom(0f)
-                       .SetFontSize(11)
-                       .SetTextAlignment(TextAlignment.CENTER)
-                       .Add(new Paragraph().Add("https://atf-labs.com").SetFontSize(7).SetFontColor(ColorConstants.BLUE));
-
-
-
-
-                    table11.AddCell(cell111);
-                    table11.AddCell(cell112);
-                    table11.AddCell(cell113);
-
-                    document.Add(table1);
-                    document.Add(table2);
-                    document.Add(table3);
-                    document.Add(table4);
-                    document.Add(table5);
-                    document.Add(table6);
-                    document.Add(table7);
-                    document.Add(table8);
-                    document.Add(table9);
-                    document.Add(table9A);
-                    document.Add(table10);
-                    document.Add(table11);
-                    document.Close();
-
-                    MessageBox.Show("Pdf is created");
-
                 }
-                catch (Exception ex)
+                
+
+                float col91 = 200f;
+                float col92 = 175f;
+                float col93 = 116f;
+                float col94 = 104f;
+                float[] colwidth9 = { col91, col92, col93, col94 };
+                Table table9 = new Table(colwidth9)
+
+                     .SetWidth(595)
+
+                    //.SetHeight(35)
+                    .SetFontSize(8);
+
+
+                Cell cell91 = new Cell(1, 1)
+                    //.SetBorder(Border.NO_BORDER)
+                    .SetPaddingLeft(25)
+
+                    .SetFontSize(9)
+                    .Add(new Paragraph(""));
+
+                Cell cell92 = new Cell(1, 1)
+                   //.SetBorder(Border.NO_BORDER)
+                   .SetPaddingLeft(25)
+
+                   .SetFontSize(9)
+                   .Add(new Paragraph(""));
+                Cell cell93 = null;
+                if (rbtnforeign.Checked==true)
                 {
-                    MessageBox.Show(ex.Message);
+                    cell93 = new Cell(1, 1)
+
+                   //.SetBorder(Border.NO_BORDER)
+                    //.SetBorderTop(new SolidBorder(0.5f))
+
+
+                   .SetFontSize(12)
+                   .Add(new Paragraph("TOTAL")).SetTextAlignment(TextAlignment.LEFT);
                 }
+                else
+                {
+                    cell93 = new Cell(1, 1)
+
+                   .SetBorder(Border.NO_BORDER)
+                    .SetBorderTop(new SolidBorder(0.5f))
+
+
+                   .SetFontSize(12)
+                   .Add(new Paragraph("TOTAL")).SetTextAlignment(TextAlignment.LEFT);
+                }
+              
+
+                Cell cell94 = null;
+                if (rbtnforeign.Checked == true)
+                {
+                    cell94 = new Cell(1, 1)
+                    //.SetBorder(Border.NO_BORDER)
+                    //.SetBorderTop(new SolidBorder(0.5f))
+                    .SetFontSize(12)
+                    .SetTextAlignment(TextAlignment.LEFT)
+                    .SetPaddingRight(25)
+
+                    .Add(TotalAmountParagraph.SetFixedLeading(13));
+                }
+                else
+                {
+                    cell94 = new Cell(1, 1)
+                    //.SetBorder(Border.NO_BORDER)
+                    //.SetBorderTop(new SolidBorder(0.5f))
+                    .SetFontSize(12)
+                    .SetTextAlignment(TextAlignment.LEFT)
+                    .SetPaddingRight(25)
+
+                    .Add(TotalSubtotalParagraph2.SetFixedLeading(13));
+                }
+                table9.AddCell(cell91);
+                table9.AddCell(cell92);
+                table9.AddCell(cell93);
+                table9.AddCell(cell94);
+
+                float col9A = 300f;
+                float[] colwidth9A = { col9A };
+                Table table9A = new Table(300)
+                     .SetMarginTop(26);
+                Cell cell9A = new Cell(1, 1)
+
+                   .SetBorder(Border.NO_BORDER)
+                     .SetPaddingLeft(25)
+
+                   .Add(BankIcon);
+                table9A.AddCell(cell9A);
+
+
+                float col102 = 120f;
+                float col103 = 475f;
+                float[] colwidth10 = { col102, col103 };
+                Table table10 = new Table(colwidth10);
+
+                //.SetMarginTop();
+
+
+
+
+
+                Cell cell102 = new Cell(1, 1)
+                     .SetBorder(Border.NO_BORDER)
+                      .SetPaddingLeft(25)
+
+                     
+                      .SetFontSize(9)
+                   
+                    .SetFont(customFont)
+
+                     .SetFontSize(10f)
+                    .Add(new Paragraph().SetFixedLeading(15).Add("Account Name   ").SetFontColor(ColorConstants.DARK_GRAY))
+                    .Add(new Paragraph().SetFixedLeading(15).Add("Account Number   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                    .Add(new Paragraph().SetFixedLeading(15).Add("IFSC Code   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                    .Add(new Paragraph().SetFixedLeading(15).Add("SWIFT Code   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                    .Add(new Paragraph().SetFixedLeading(15).Add("Bank Name   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                    .Add(new Paragraph().SetFixedLeading(15).Add("Bank Address   ")).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY);
+
+                Cell cell103 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                     .SetPaddingLeft(0)
+                    
+                     .SetFontSize(9)
+                   
+                   .SetFont(customFont)
+
+                    .SetFontSize(10f)
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + account_holder_name).SetFontColor(ColorConstants.DARK_GRAY))
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + account_number)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + ifsc)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + swift)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + bank_name)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY)
+                   .Add(new Paragraph().SetFixedLeading(15).Add(": " + bank_address)).SetPaddingTop(1).SetFontColor(ColorConstants.DARK_GRAY);
+
+                table10.AddCell(cell102);
+                table10.AddCell(cell103);
+
+
+
+
+
+                float col111 = 800f;
+                float col112 = 300f;
+                float[] colwidth11 = { col111, col112 };
+                Table table11 = new Table(colwidth11)
+                      .SetFixedPosition(0, 0, 595)
+                     .SetWidth(595)
+
+
+                    .SetFontSize(8)
+                    .SetBackgroundColor(customColor);
+
+                Cell cell111 = new Cell(1, 2)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetHeight(13)
+
+                    .SetPaddingTop(7)
+
+                    .SetFontSize(13)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetPaddingBottom(0)
+                    .Add(new Paragraph().Add("*Thank you for your business*").SetFontSize(8));
+
+
+
+
+                Cell cell112 = new Cell(1, 1)
+                    .SetBorder(Border.NO_BORDER)
+                    .SetHeight(20)
+                    .SetFontSize(12)
+                    .SetTextAlignment(TextAlignment.RIGHT)
+                    .SetMarginBottom(0)
+                    .Add(new Paragraph().Add("*This is a Computer generated invoice and does not require signature*").SetFontSize(7).SetFontColor(ColorConstants.DARK_GRAY));
+                Cell cell113 = new Cell(1, 1)
+                   .SetBorder(Border.NO_BORDER)
+
+                    .SetMarginBottom(0f)
+                   .SetFontSize(11)
+                   .SetTextAlignment(TextAlignment.CENTER)
+                   .Add(new Paragraph().Add("https://atf-labs.com").SetFontSize(7).SetFontColor(ColorConstants.BLUE));
+
+
+
+
+                table11.AddCell(cell111);
+                table11.AddCell(cell112);
+                table11.AddCell(cell113);
+
+                document.Add(table1);
+                document.Add(table2);
+                document.Add(table3);
+                document.Add(table4);
+                document.Add(table5);
+                document.Add(table6);
+                document.Add(table7);
+                document.Add(table8);
+                document.Add(table9);
+                document.Add(table9A);
+                document.Add(table10);
+                document.Add(table11);
+                document.Close();
+
+                MessageBox.Show("Pdf is created");
+
             }
-
-
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             this.Close();
-            //InvoiceDetails invoiceDetails = Application.OpenForms["invoiceDetails"] as InvoiceDetails;
-            //invoiceDetails.RefreshDataGridView();
+           
+        }
+
+        private void rbtnnogst_CheckedChanged(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void rbtnnogst_CheckedChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
