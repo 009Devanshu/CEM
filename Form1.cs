@@ -65,5 +65,19 @@ namespace CEM
             Invoice_Details.MdiParent = this;
             Invoice_Details.Show();
         }
+
+        private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Home home = new Home();
+            home.MdiParent = this;
+            home.Show();
+        }
+
+        private void barButtonItem4_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MainForm home = new MainForm();
+            home.MdiParent = this;
+            home.Show();
+        }
     }
 }

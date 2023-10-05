@@ -1386,7 +1386,7 @@ namespace CEM
                 TotalAmountParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2))
                                                 .SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
 
-                TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(boldFont2).SetFontSize(13f))
+                TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(helveticaBold).SetFontSize(13f))
                                                     .Add(" " + formattedSubtotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
             }
 
@@ -1404,7 +1404,7 @@ namespace CEM
 
             if (combocurrency.SelectedIndex == 1)
             {
-                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(boldFont2).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(helveticaBold).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
                 TotalSubtotalParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2)).SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
                 TotalSubtotalParagraph2 = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2)).SetFontSize(12).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
 
@@ -1551,9 +1551,9 @@ namespace CEM
                         .SetPaddingTop(19)
 
                         .SetTextAlignment(TextAlignment.LEFT)
-
+                       
                         .Add(new Paragraph().Add(TotalAmountParagraphBold).Add(new Text(" INR").SetFontSize(12f).SetFont(helveticaBold)))
-                        .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                        .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f).SetFont(helveticaBold));
                     }
                     else if (combocurrency.SelectedIndex == 1)
                     {
@@ -1564,7 +1564,7 @@ namespace CEM
                        .SetTextAlignment(TextAlignment.LEFT)
 
                        .Add(new Paragraph().Add(TotalAmountParagraphBold).Add(new Text("").SetFontSize(12f).SetFont(helveticaBold)))
-                       .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f));
+                       .Add(new Paragraph().Add("AMOUNT").SetFixedLeading(17).SetFontSize(12f).SetFont(helveticaBold));
                     }
 
                 }
@@ -1595,17 +1595,14 @@ namespace CEM
 
                 }
                
-
-
-
-
                 table4.AddCell(cell41);
                 table4.AddCell(cell42);
 
                 float col51 = 300f;
-                float col52 = 300f;
-                float[] colwidth5 = { col51, col52 };
+               
+                float[] colwidth5 = { col51};
                 Table table5 = new Table(colwidth5)
+                    
                      .SetMarginTop(8);
 
                 Cell cell51 = new Cell(1, 2)
@@ -1613,6 +1610,7 @@ namespace CEM
                     .SetBorder(Border.NO_BORDER)
                     .SetFont(boldFont)
                     .SetFontColor(ColorConstants.BLACK)
+                    .SetMaxWidth(300)
                     .Add(new Paragraph().Add("BILL TO:").SetFont(helveticaSemiBoldFont)).SetFontSize(13)
                     .Add(new Paragraph().SetFixedLeading(12).Add(comboclientname.Text).SetFontSize(10).SetPaddingTop(0))
                     .Add(new Paragraph().SetFixedLeading(15).Add(txtclientcompany.Text).SetFontSize(10))
@@ -1711,8 +1709,8 @@ namespace CEM
                 float[] colwidth7 = { col71, col72, col73, col74 };
                 Table table7 = new Table(colwidth7)
                     .SetMarginTop(5)
-
-                     .SetWidth(595)
+                    .SetWidth(595)
+                     
 
                     .SetFontSize(8);
 
@@ -1722,9 +1720,11 @@ namespace CEM
                     .SetBorder(Border.NO_BORDER)
                     .SetBorderBottom(new SolidBorder(0.5f))
                     .SetPaddingLeft(25)
+                    .SetPaddingRight(5)
                     .SetFontSize(10)
-                    .Add(new Paragraph().Add(txtitemname.Text).SetStrokeColor(ColorConstants.BLACK).SetFixedLeading(12))
-                    .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8).SetFontColor(ColorConstants.DARK_GRAY).SetFixedLeading(40));
+                     .SetMaxWidth(170)    
+                    .Add(new Paragraph().Add(txtitemname.Text).SetStrokeColor(ColorConstants.BLACK).SetFixedLeading(13))
+                    .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8).SetFontColor(ColorConstants.DARK_GRAY));
 
                 Cell cell72 = null;
                 Cell cell73 = null;
@@ -1735,11 +1735,13 @@ namespace CEM
                    .SetBorder(Border.NO_BORDER)
                    .SetBorderBottom(new SolidBorder(0.5f))
                    .SetPaddingLeft(20)
+                  
                    .Add(AMOUNTParagraph.SetFixedLeading(13));
 
                     cell73 = new Cell(1, 1)
                         .SetBorder(Border.NO_BORDER)
                         .SetBorderBottom(new SolidBorder(0.5f))
+                       
                         .SetPaddingLeft(20)
                         .Add(GSTParagraph.SetFixedLeading(13));
 
@@ -1750,6 +1752,7 @@ namespace CEM
 
                          .SetBorder(Border.NO_BORDER)
                          .SetBorderBottom(new SolidBorder(0.5f))
+                        
                         .Add(ForeignTotalParagraph.SetFixedLeading(13));
                 }
                 else
@@ -1979,7 +1982,7 @@ namespace CEM
                     cell93 = new Cell(1, 1)
 
                    .SetBorder(Border.NO_BORDER)
-                    //.SetBorderTop(new SolidBorder(0.5f))
+                    .SetBorderBottom(new SolidBorder(0.5f))
 
 
                    .SetFontSize(12)
@@ -2004,7 +2007,7 @@ namespace CEM
                 {
                     cell94 = new Cell(1, 1)
                     .SetBorder(Border.NO_BORDER)
-                    //.SetBorderTop(new SolidBorder(0.5f))
+                    .SetBorderBottom(new SolidBorder(0.5f))
                     .SetFontSize(12)
                     .SetTextAlignment(TextAlignment.LEFT)
                     .SetPaddingRight(25)
@@ -2027,15 +2030,16 @@ namespace CEM
                 table9.AddCell(cell93);
                 table9.AddCell(cell94);
 
+                
+                
                 float col9A = 300f;
                 float[] colwidth9A = { col9A };
-                Table table9A = new Table(300)
-                     .SetMarginTop(26);
+                Table table9A = new Table(300);
+                table9A.SetFixedPosition(0, 155, 0);                          
+                
                 Cell cell9A = new Cell(1, 1)
-
-                   .SetBorder(Border.NO_BORDER)
-                     .SetPaddingLeft(25)
-
+                  .SetBorder(Border.NO_BORDER)
+                   .SetPaddingLeft(25)
                    .Add(BankIcon);
                 table9A.AddCell(cell9A);
 
@@ -2044,20 +2048,18 @@ namespace CEM
                 float col103 = 475f;
                 float[] colwidth10 = { col102, col103 };
                 Table table10 = new Table(colwidth10);
-
-                //.SetMarginTop();
-
-
-
-
-
+                table10.SetFixedPosition(0, 60, 0)
+                    .SetWidth(580);              
+                    
+                
+                                
                 Cell cell102 = new Cell(1, 1)
                      .SetBorder(Border.NO_BORDER)
                       .SetPaddingLeft(25)
 
                      
                       .SetFontSize(9)
-                   
+                     
                     .SetFont(customFont)
 
                      .SetFontSize(10f)

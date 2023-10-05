@@ -292,3 +292,6 @@ C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\Poppins-SemiBold.ttf
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\HELVBLAK.ttf
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\IBMPlexSansDevanagari-SemiBold.ttf
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\IBMPlexSansDevanagari-Medium.ttf
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.Home.resources
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.MainForm.resources
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.OtherDetails.resources
