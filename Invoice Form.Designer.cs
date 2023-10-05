@@ -32,6 +32,11 @@ namespace CEM
             this.components = new System.ComponentModel.Container();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbtnnogst = new System.Windows.Forms.RadioButton();
+            this.rbtnforeign = new System.Windows.Forms.RadioButton();
+            this.rbtninterstate = new System.Windows.Forms.RadioButton();
+            this.rbtnwithinstate = new System.Windows.Forms.RadioButton();
             this.comboBank = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtamount = new System.Windows.Forms.TextBox();
@@ -76,15 +81,11 @@ namespace CEM
             this.emptySpaceItem11 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem13 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.rbtnwithinstate = new System.Windows.Forms.RadioButton();
-            this.rbtninterstate = new System.Windows.Forms.RadioButton();
-            this.rbtnforeign = new System.Windows.Forms.RadioButton();
-            this.rbtnnogst = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -114,7 +115,6 @@ namespace CEM
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,13 +144,69 @@ namespace CEM
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rbtnnogst);
+            this.panel1.Controls.Add(this.rbtnforeign);
+            this.panel1.Controls.Add(this.rbtninterstate);
+            this.panel1.Controls.Add(this.rbtnwithinstate);
+            this.panel1.Location = new System.Drawing.Point(142, 128);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(591, 38);
+            this.panel1.TabIndex = 20;
+            // 
+            // rbtnnogst
+            // 
+            this.rbtnnogst.AutoSize = true;
+            this.rbtnnogst.Location = new System.Drawing.Point(444, 8);
+            this.rbtnnogst.Name = "rbtnnogst";
+            this.rbtnnogst.Size = new System.Drawing.Size(76, 23);
+            this.rbtnnogst.TabIndex = 3;
+            this.rbtnnogst.TabStop = true;
+            this.rbtnnogst.Text = "No GST";
+            this.rbtnnogst.UseVisualStyleBackColor = true;
+            this.rbtnnogst.CheckedChanged += new System.EventHandler(this.rbtnnogst_CheckedChanged_1);
+            // 
+            // rbtnforeign
+            // 
+            this.rbtnforeign.AutoSize = true;
+            this.rbtnforeign.Location = new System.Drawing.Point(301, 8);
+            this.rbtnforeign.Name = "rbtnforeign";
+            this.rbtnforeign.Size = new System.Drawing.Size(76, 23);
+            this.rbtnforeign.TabIndex = 2;
+            this.rbtnforeign.TabStop = true;
+            this.rbtnforeign.Text = "Foreign";
+            this.rbtnforeign.UseVisualStyleBackColor = true;
+            // 
+            // rbtninterstate
+            // 
+            this.rbtninterstate.AutoSize = true;
+            this.rbtninterstate.Location = new System.Drawing.Point(156, 8);
+            this.rbtninterstate.Name = "rbtninterstate";
+            this.rbtninterstate.Size = new System.Drawing.Size(94, 23);
+            this.rbtninterstate.TabIndex = 1;
+            this.rbtninterstate.TabStop = true;
+            this.rbtninterstate.Text = "Inter State";
+            this.rbtninterstate.UseVisualStyleBackColor = true;
+            // 
+            // rbtnwithinstate
+            // 
+            this.rbtnwithinstate.AutoSize = true;
+            this.rbtnwithinstate.Location = new System.Drawing.Point(3, 8);
+            this.rbtnwithinstate.Name = "rbtnwithinstate";
+            this.rbtnwithinstate.Size = new System.Drawing.Size(105, 23);
+            this.rbtnwithinstate.TabIndex = 0;
+            this.rbtnwithinstate.TabStop = true;
+            this.rbtnwithinstate.Text = "Within State";
+            this.rbtnwithinstate.UseVisualStyleBackColor = true;
+            // 
             // comboBank
             // 
             this.comboBank.FormattingEnabled = true;
             this.comboBank.Items.AddRange(new object[] {
             "HDFC Bank",
             "Yes Bank"});
-            this.comboBank.Location = new System.Drawing.Point(142, 524);
+            this.comboBank.Location = new System.Drawing.Point(142, 534);
             this.comboBank.Name = "comboBank";
             this.comboBank.Size = new System.Drawing.Size(591, 25);
             this.comboBank.TabIndex = 19;
@@ -189,7 +245,7 @@ namespace CEM
             this.txtdescription.Location = new System.Drawing.Point(142, 470);
             this.txtdescription.Multiline = true;
             this.txtdescription.Name = "txtdescription";
-            this.txtdescription.Size = new System.Drawing.Size(591, 33);
+            this.txtdescription.Size = new System.Drawing.Size(591, 45);
             this.txtdescription.TabIndex = 15;
             // 
             // txtitemname
@@ -416,7 +472,7 @@ namespace CEM
             this.layoutControlItem11.Control = this.txtdescription;
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 458);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(725, 37);
+            this.layoutControlItem11.Size = new System.Drawing.Size(725, 49);
             this.layoutControlItem11.Text = "Item Description:";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(127, 17);
             // 
@@ -474,7 +530,7 @@ namespace CEM
             // co
             // 
             this.co.Control = this.comboBank;
-            this.co.Location = new System.Drawing.Point(0, 512);
+            this.co.Location = new System.Drawing.Point(0, 522);
             this.co.Name = "co";
             this.co.Size = new System.Drawing.Size(725, 30);
             this.co.Text = "Select Your Bank:";
@@ -483,17 +539,17 @@ namespace CEM
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
-            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 495);
+            this.emptySpaceItem5.Location = new System.Drawing.Point(0, 507);
             this.emptySpaceItem5.Name = "emptySpaceItem5";
-            this.emptySpaceItem5.Size = new System.Drawing.Size(725, 17);
+            this.emptySpaceItem5.Size = new System.Drawing.Size(725, 15);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem6
             // 
             this.emptySpaceItem6.AllowHotTrack = false;
-            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 542);
+            this.emptySpaceItem6.Location = new System.Drawing.Point(0, 552);
             this.emptySpaceItem6.Name = "emptySpaceItem6";
-            this.emptySpaceItem6.Size = new System.Drawing.Size(725, 20);
+            this.emptySpaceItem6.Size = new System.Drawing.Size(725, 10);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem7
@@ -552,17 +608,6 @@ namespace CEM
             this.emptySpaceItem13.Size = new System.Drawing.Size(725, 14);
             this.emptySpaceItem13.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rbtnnogst);
-            this.panel1.Controls.Add(this.rbtnforeign);
-            this.panel1.Controls.Add(this.rbtninterstate);
-            this.panel1.Controls.Add(this.rbtnwithinstate);
-            this.panel1.Location = new System.Drawing.Point(142, 128);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(591, 38);
-            this.panel1.TabIndex = 20;
-            // 
             // layoutControlItem15
             // 
             this.layoutControlItem15.Control = this.panel1;
@@ -570,51 +615,6 @@ namespace CEM
             this.layoutControlItem15.Name = "layoutControlItem15";
             this.layoutControlItem15.Size = new System.Drawing.Size(725, 42);
             this.layoutControlItem15.TextSize = new System.Drawing.Size(127, 17);
-            // 
-            // rbtnwithinstate
-            // 
-            this.rbtnwithinstate.AutoSize = true;
-            this.rbtnwithinstate.Location = new System.Drawing.Point(3, 8);
-            this.rbtnwithinstate.Name = "rbtnwithinstate";
-            this.rbtnwithinstate.Size = new System.Drawing.Size(105, 23);
-            this.rbtnwithinstate.TabIndex = 0;
-            this.rbtnwithinstate.TabStop = true;
-            this.rbtnwithinstate.Text = "Within State";
-            this.rbtnwithinstate.UseVisualStyleBackColor = true;
-            // 
-            // rbtninterstate
-            // 
-            this.rbtninterstate.AutoSize = true;
-            this.rbtninterstate.Location = new System.Drawing.Point(156, 8);
-            this.rbtninterstate.Name = "rbtninterstate";
-            this.rbtninterstate.Size = new System.Drawing.Size(94, 23);
-            this.rbtninterstate.TabIndex = 1;
-            this.rbtninterstate.TabStop = true;
-            this.rbtninterstate.Text = "Inter State";
-            this.rbtninterstate.UseVisualStyleBackColor = true;
-            // 
-            // rbtnforeign
-            // 
-            this.rbtnforeign.AutoSize = true;
-            this.rbtnforeign.Location = new System.Drawing.Point(301, 8);
-            this.rbtnforeign.Name = "rbtnforeign";
-            this.rbtnforeign.Size = new System.Drawing.Size(76, 23);
-            this.rbtnforeign.TabIndex = 2;
-            this.rbtnforeign.TabStop = true;
-            this.rbtnforeign.Text = "Foreign";
-            this.rbtnforeign.UseVisualStyleBackColor = true;
-            // 
-            // rbtnnogst
-            // 
-            this.rbtnnogst.AutoSize = true;
-            this.rbtnnogst.Location = new System.Drawing.Point(444, 8);
-            this.rbtnnogst.Name = "rbtnnogst";
-            this.rbtnnogst.Size = new System.Drawing.Size(76, 23);
-            this.rbtnnogst.TabIndex = 3;
-            this.rbtnnogst.TabStop = true;
-            this.rbtnnogst.Text = "No GST";
-            this.rbtnnogst.UseVisualStyleBackColor = true;
-            this.rbtnnogst.CheckedChanged += new System.EventHandler(this.rbtnnogst_CheckedChanged_1);
             // 
             // Invoice_Form
             // 
@@ -630,6 +630,8 @@ namespace CEM
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -659,8 +661,6 @@ namespace CEM
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem13)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             this.ResumeLayout(false);
 

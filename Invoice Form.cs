@@ -1149,28 +1149,47 @@ namespace CEM
 
 
             double Subtotoal = double.Parse(txtamount.Text);
-
+            
+           
             double CGST = (Subtotoal * 9) / 100;
+           
+
             double SGST = (Subtotoal * 9) / 100;
+           
+
             double IGST = (Subtotoal * 18) / 100;
+           
+
             double total = 0;
 
             //For Foreign client
             double GST = (Subtotoal * 12) / 100;
+           
+
             double AMOUNT = (Subtotoal * 88) / 100;
+          
             if (rbtnwithinstate.Checked == true)
             {
                 total = Subtotoal + SGST + CGST;
+                total = Math.Round(total);
             }
             else if (rbtninterstate.Checked == true)
             {
                 total = Subtotoal + IGST;
+                total = Math.Round(total);
             }
             /*else if (rbtnforeign.Checked == true)
             {
                 total = (Subtotoal * 88) / 100;
             }*/
 
+            //Rounding Off
+            Subtotoal = Math.Round(Subtotoal);
+            CGST = Math.Round(CGST);
+            SGST = Math.Round(SGST);
+            IGST = Math.Round(IGST);
+            GST = Math.Round(GST);
+            AMOUNT = Math.Round(AMOUNT);
 
             //Formatting Numbers
             CultureInfo hindi = new CultureInfo("hi-IN");
@@ -1190,7 +1209,7 @@ namespace CEM
 
             string formattedGST = string.Format(hindi, "{0:#,#}", GST);
 
-
+            
            
 
             if (comboBank.Text=="HDFC Bank")
@@ -1330,20 +1349,46 @@ namespace CEM
             Paragraph SGSTParagraph = null;
             Paragraph IGSTParagraph = null;
 
-            Paragraph AMOUNTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
-                                                .Add("" + formattedAMOUNT).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
 
-            Paragraph GSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
-                                                .Add("" + formattedGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+            Paragraph AMOUNTParagraph = null;
+            Paragraph GSTParagraph = null;
+            Paragraph ForeignTotalParagraph = null;
+            Paragraph TotalAmountParagraph = null;
+            Paragraph TotalAmountParagraphBold = null;
+            if (combocurrency.SelectedIndex == 0)
+            {
+                AMOUNTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                               .Add("" + formattedAMOUNT).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
 
-            Paragraph ForeignTotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
-                                               .Add("" + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+                GSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                                    .Add("" + formattedGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
 
-            Paragraph TotalAmountParagraph = new Paragraph().Add(new Text("\u20B9").SetFontSize(14).SetFont(devnagariFont))
-                                            .SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+                ForeignTotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont2))
+                                                   .Add("" + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
 
-            Paragraph TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont3).SetFontSize(13f))
-                                                .Add(" " + formattedSubtotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+                TotalAmountParagraph = new Paragraph().Add(new Text("\u20B9").SetFontSize(14).SetFont(devnagariFont))
+                                                .SetFontSize(12).Add("" + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+
+                TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("\u20B9").SetFont(devnagariFont3).SetFontSize(13f))
+                                                    .Add(" " + formattedSubtotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+            }
+            else if(combocurrency.SelectedIndex==1)
+            {
+                AMOUNTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2))
+                                              .Add("" + formattedAMOUNT).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                GSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2))
+                                                    .Add("" + formattedGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                ForeignTotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2))
+                                                   .Add("" + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
+
+                TotalAmountParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2))
+                                                .SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+
+                TotalAmountParagraphBold = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(boldFont2).SetFontSize(13f))
+                                                    .Add(" " + formattedSubtotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+            }
 
             if (combocurrency.SelectedIndex == 0)
             {
@@ -1359,9 +1404,9 @@ namespace CEM
 
             if (combocurrency.SelectedIndex == 1)
             {
-                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont3).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
-                TotalSubtotalParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
-                TotalSubtotalParagraph2 = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(devnagariFont)).SetFontSize(12).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
+                TotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(boldFont2).SetFontSize(13f)).Add(" " + formattedTotal).SetFontSize(12).SetFont(helveticaBold).SetTextAlignment(TextAlignment.LEFT);
+                TotalSubtotalParagraph = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2)).SetFontSize(12).Add(" " + formattedSubtotal).SetTextAlignment(TextAlignment.LEFT);
+                TotalSubtotalParagraph2 = new Paragraph().Add(new Text("$").SetFontSize(14).SetFont(boldFont2)).SetFontSize(12).Add(" " + formattedTotal).SetTextAlignment(TextAlignment.LEFT);
 
                 SubtotalParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + formattedSubtotal).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
                 CGSTParagraph = new Paragraph().SetFixedLeading(15).Add(new Text("$").SetFont(devnagariFont2)).Add(" " + formattedCGST).SetFont(devnagariFont2).SetTextAlignment(TextAlignment.LEFT).SetFontSize(10);
@@ -1679,7 +1724,7 @@ namespace CEM
                     .SetPaddingLeft(25)
                     .SetFontSize(10)
                     .Add(new Paragraph().Add(txtitemname.Text).SetStrokeColor(ColorConstants.BLACK).SetFixedLeading(12))
-                    .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8).SetFontColor(ColorConstants.DARK_GRAY));
+                    .Add(new Paragraph().Add(txtdescription.Text).SetFontSize(8).SetFontColor(ColorConstants.DARK_GRAY).SetFixedLeading(40));
 
                 Cell cell72 = null;
                 Cell cell73 = null;
@@ -1759,7 +1804,7 @@ namespace CEM
 
 
                     Cell cell81 = new Cell(1, 1)
-                        //.SetBorder(Border.NO_BORDER)
+                        .SetBorder(Border.NO_BORDER)
 
                         .SetPaddingLeft(25)
 
@@ -1767,7 +1812,7 @@ namespace CEM
                         .Add(new Paragraph(""));
 
                     Cell cell82 = new Cell(1, 1)
-                        //.SetBorder(Border.NO_BORDER)
+                        .SetBorder(Border.NO_BORDER)
                         .SetPaddingTop(10)
                         .SetFontSize(10)
                         .SetTextAlignment(TextAlignment.LEFT);
@@ -1790,7 +1835,7 @@ namespace CEM
                         cell83 = new Cell(1, 1)
 
                         .SetBorder(Border.NO_BORDER)
-
+                        
                         //.SetFontSize(10)
                         .SetFont(boldFont2)
                         .SetPaddingRight(25)
@@ -1806,7 +1851,7 @@ namespace CEM
 
                         cell83 = new Cell(1, 1)
 
-                       //.SetBorder(Border.NO_BORDER)
+                       .SetBorder(Border.NO_BORDER)
 
                        //.SetFontSize(10)
                        .SetFont(boldFont2)
@@ -1867,7 +1912,7 @@ namespace CEM
                     {
 
                         cell84 = new Cell(1, 1)
-                         //.SetBorder(Border.NO_BORDER)
+                         .SetBorder(Border.NO_BORDER)
 
                          .SetFontSize(7f)
                          .SetTextAlignment(TextAlignment.LEFT)
@@ -1916,14 +1961,14 @@ namespace CEM
 
 
                 Cell cell91 = new Cell(1, 1)
-                    //.SetBorder(Border.NO_BORDER)
+                    .SetBorder(Border.NO_BORDER)
                     .SetPaddingLeft(25)
 
                     .SetFontSize(9)
                     .Add(new Paragraph(""));
 
                 Cell cell92 = new Cell(1, 1)
-                   //.SetBorder(Border.NO_BORDER)
+                   .SetBorder(Border.NO_BORDER)
                    .SetPaddingLeft(25)
 
                    .SetFontSize(9)
@@ -1933,11 +1978,12 @@ namespace CEM
                 {
                     cell93 = new Cell(1, 1)
 
-                   //.SetBorder(Border.NO_BORDER)
+                   .SetBorder(Border.NO_BORDER)
                     //.SetBorderTop(new SolidBorder(0.5f))
 
 
                    .SetFontSize(12)
+                   .SetPaddingLeft(20)
                    .Add(new Paragraph("TOTAL")).SetTextAlignment(TextAlignment.LEFT);
                 }
                 else
@@ -1957,7 +2003,7 @@ namespace CEM
                 if (rbtnforeign.Checked == true)
                 {
                     cell94 = new Cell(1, 1)
-                    //.SetBorder(Border.NO_BORDER)
+                    .SetBorder(Border.NO_BORDER)
                     //.SetBorderTop(new SolidBorder(0.5f))
                     .SetFontSize(12)
                     .SetTextAlignment(TextAlignment.LEFT)
@@ -1968,8 +2014,8 @@ namespace CEM
                 else
                 {
                     cell94 = new Cell(1, 1)
-                    //.SetBorder(Border.NO_BORDER)
-                    //.SetBorderTop(new SolidBorder(0.5f))
+                    .SetBorder(Border.NO_BORDER)
+                    .SetBorderTop(new SolidBorder(0.5f))
                     .SetFontSize(12)
                     .SetTextAlignment(TextAlignment.LEFT)
                     .SetPaddingRight(25)
