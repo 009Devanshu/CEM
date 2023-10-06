@@ -35,7 +35,7 @@ namespace CEM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 408);
+            this.ClientSize = new System.Drawing.Size(582, 406);
             this.Name = "OtherDetails";
             this.Text = "OtherDetails";
             this.ResumeLayout(false);

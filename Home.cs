@@ -20,12 +20,10 @@ using System.Xml.Linq;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 using System.Linq.Expressions;
 
-
 namespace CEM
 {
     public partial class Home : DevExpress.XtraEditors.XtraForm
     {
-
         //For sliding datagrid
         private bool isDragging = false;
         private int initialMouseY;
@@ -66,41 +64,23 @@ namespace CEM
         SqlCommand cmd;
         SqlDataAdapter adpt;
         System.Data.DataTable dt;
-
         public Home()
         {
             InitializeComponent();
             conn = new SqlConnection(path);
         }
 
-        private void Home_Load(object sender, EventArgs e)
-        {
-            AllDisplay();
-
-            dataGridView1.Columns[0].Width = 320;
-            dataGridView1.Columns[1].Width = 320;
-            dataGridView1.Columns[2].Width = 320;
-            dataGridView1.Columns[3].Width = 320;
-            //dataGridView1.Columns[4].Width = 300;
-            dataGridView1.Columns[5].Width = 320;
-            dataGridView1.Columns[6].Width = 320;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            MainForm main_form = new MainForm();
-            main_form.Show();
-           
-
-            Home home = new Home();
-            home.Close();
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
         }
-        public void display()
+        /*public void display()
         {
 
             try
             {
-                string name = btnsearch2.Text;
+                string name = txtname.Text;
                 dt = new System.Data.DataTable();
                 conn.Open();
                 adpt = new SqlDataAdapter("exec LoadEmp_DB '" + name + "'", conn);
@@ -112,7 +92,7 @@ namespace CEM
             {
                 MessageBox.Show(ex.Message);
             }
-        }
+        }*/
         public void AllDisplay()
         {
             try
@@ -151,7 +131,6 @@ namespace CEM
                 MessageBox.Show(ex.Message);
             }
         }
-
         public void RefreshDataGridView()
         {
             try
@@ -168,9 +147,77 @@ namespace CEM
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnsearch2_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                adpt = new SqlDataAdapter("exec Search_DB '" + btnsearch2.Text + "'", conn);
+
+                dt = new DataTable();
+                adpt.Fill(dt);
+                dataGridView1.DataSource = dt;
+                dataGridView1.Columns[0].Width = 320;
+                dataGridView1.Columns[1].Width = 320;
+                dataGridView1.Columns[2].Width = 320;
+                dataGridView1.Columns[3].Width = 320;
+                dataGridView1.Columns[4].Width = 320;
+                dataGridView1.Columns[5].Width = 320;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MainForm form = new MainForm();
+            form.Show();
+            /* Form1 form1 = new Form1();
+              form1*/
+            Home home = new Home();
+            home.Close();
+        }
+
+        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Text == "Generate Salary Slip")
+            {
+                OtherDetails o = new OtherDetails();
+                /*o.StartPosition = FormStartPosition.Manual;
+                o.Location = new Point(x, y);*/
+                o.Show();
+
+            }
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            AllDisplay();
+
+            dataGridView1.Columns[0].Width = 320;
+            dataGridView1.Columns[1].Width = 320;
+            dataGridView1.Columns[2].Width = 320;
+            dataGridView1.Columns[3].Width = 320;
+            //dataGridView1.Columns[4].Width = 300;
+            dataGridView1.Columns[5].Width = 320;
+            dataGridView1.Columns[6].Width = 320;
+
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -223,56 +270,9 @@ namespace CEM
 
                 contextMenuStrip1.ItemClicked -= contextMenuStrip1_ItemClicked;
                 contextMenuStrip1.ItemClicked += contextMenuStrip1_ItemClicked;
-                
+                /*  OtherDetails o = new OtherDetails();
+                  o.ShowDialog();*/
             }
-        }
-
-        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            
-            if (e.ClickedItem.Text == "Generate Salary Slip")
-            {
-                OtherDetails o = new OtherDetails();
-
-                o.Show();
-
-            }
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            MainForm form = new MainForm();
-            form.Show();
-            /* Form1 form1 = new Form1();
-              form1*/
-            Home home = new Home();
-            home.Close();
-        }
-
-        private void txtname_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                conn.Open();
-                adpt = new SqlDataAdapter("exec Search_DB '" + btnsearch2.Text + "'", conn);
-
-                dt = new DataTable();
-                adpt.Fill(dt);
-                dataGridView1.DataSource = dt;
-                dataGridView1.Columns[0].Width = 320;
-                dataGridView1.Columns[1].Width = 320;
-                dataGridView1.Columns[2].Width = 320;
-                dataGridView1.Columns[3].Width = 320;
-                dataGridView1.Columns[4].Width = 320;
-                dataGridView1.Columns[5].Width = 320;
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
         }
     }
 }
