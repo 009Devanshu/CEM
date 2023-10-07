@@ -136,7 +136,7 @@ namespace CEM
             saveFileDialog.FileName = $"{employee_name}_SalarySlip_{comboBoxMonth.Text}{comboBoxYear.Text}.pdf";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string pdfPath = saveFileDialog.FileName;
+                string pdfPath = $@"F:\Salary_Slips\{employee_name}\" + $"{employee_name}_SalarySlip_{comboBoxMonth.Text}{comboBoxYear.Text}.pdf";
                 //string watermarkText = "Watermark Text";
 
 
