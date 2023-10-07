@@ -140,6 +140,28 @@ namespace CEM
                 adpt = new SqlDataAdapter("exec LoadAllEmp", conn);
                 adpt.Fill(dt);
                 dataGridView1.DataSource = dt;
+
+                /*
+                Hiding Some columns of datagrid
+               */
+                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[7].Visible = false;
+                dataGridView1.Columns[8].Visible = false;
+                dataGridView1.Columns[9].Visible = false;
+                dataGridView1.Columns[10].Visible = false;
+                dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[12].Visible = false;
+                dataGridView1.Columns[13].Visible = false;
+                dataGridView1.Columns[14].Visible = false;
+                dataGridView1.Columns[15].Visible = false;
+                dataGridView1.Columns[16].Visible = false;
+                dataGridView1.Columns[17].Visible = false;
+                dataGridView1.Columns[18].Visible = false;
+                dataGridView1.Columns[19].Visible = false;
+                dataGridView1.Columns[20].Visible = false;
+                dataGridView1.Columns[21].Visible = false;
+                dataGridView1.Columns[22].Visible = false;
+                dataGridView1.Columns[23].Visible = false;
                 conn.Close();
             }
             catch (Exception ex)
