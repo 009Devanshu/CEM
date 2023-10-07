@@ -121,26 +121,17 @@ namespace CEM
             Form ffff = Application.OpenForms["Home"];
             employee_name = ((Home)ffff).EmpName;
 
-            var folderPath = $"C:\\SalarySlips\\{employee_name}_SalarySlips";
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
+            
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
-            saveFileDialog.Title = "Save PDF File";
+            string folderPath = $@"F:\Salary_Slips\{employee_name}";
+            Directory.CreateDirectory(folderPath);
 
-            saveFileDialog.InitialDirectory = folderPath; // Set the initial directory to your created folder
-
-            saveFileDialog.FileName = $"{employee_name}_SalarySlip_{comboBoxMonth.Text}{comboBoxYear.Text}.pdf";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string pdfPath = $@"F:\Salary_Slips\{employee_name}\" + $"{employee_name}_SalarySlip_{comboBoxMonth.Text}{comboBoxYear.Text}.pdf";
-                //string watermarkText = "Watermark Text";
+            string pdfPath = $@"{folderPath}\{employee_name}_SalarySlip_{comboBoxMonth.Text}{comboBoxYear.Text}.pdf";
+           
+            //string watermarkText = "Watermark Text";
 
 
-                try
+            try
                 {
                     // Create a watermark
 
@@ -897,7 +888,7 @@ namespace CEM
                 {
                     MessageBox.Show($"I/O Exception: {ex.Message}");
                 }
-            }
+            
         }
         static string ConvertRoundedDoubleToWords(double number)
         {
