@@ -159,7 +159,6 @@ namespace CEM
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4, true);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
             // documentManager1
             // 
