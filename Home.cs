@@ -296,5 +296,11 @@ namespace CEM
                   o.ShowDialog();*/
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Home homeForm = Application.OpenForms["Home"] as Home;
+            RefreshDataGridView();
+        }
     }
 }

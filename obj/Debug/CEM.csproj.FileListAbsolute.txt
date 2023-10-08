@@ -35,6 +35,8 @@ C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\painted-logo3.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\email-icon.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\bank.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\rupee.png
+C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\log6.png
+C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\logo2.png
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.exe.config
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.exe
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\CEM.pdb
@@ -272,6 +274,7 @@ C:\Users\devan\source\repos\CEM\CEM\bin\Debug\de\DevExpress.Diagram.v20.1.Core.r
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\es\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\ja\DevExpress.Diagram.v20.1.Core.resources.dll
 C:\Users\devan\source\repos\CEM\CEM\bin\Debug\ru\DevExpress.Diagram.v20.1.Core.resources.dll
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.AssemblyReference.cache
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.ClientDetails.resources
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.Client_Delete_Form.resources
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.Company_Details.resources
@@ -294,6 +297,6 @@ C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.CoreCompileInputs.cache
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.CopyComplete
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.exe
 C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.pdb
-C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.csproj.AssemblyReference.cache
-C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\log6.png
-C:\Users\devan\source\repos\CEM\CEM\bin\Debug\Resources\logo2.png
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.Home2.resources
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.MainForm2.resources
+C:\Users\devan\source\repos\CEM\CEM\obj\Debug\CEM.Employee_Update_Form.resources

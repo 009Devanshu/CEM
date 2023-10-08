@@ -69,7 +69,7 @@ namespace CEM
             this.ribbonControl1.LargeImages = this.imageCollection1;
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(12, 18, 12, 18);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -104,19 +104,21 @@ namespace CEM
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Home";
+            this.barButtonItem3.Caption = "Salary Slip";
             this.barButtonItem3.Id = 10;
-            this.barButtonItem3.ImageOptions.LargeImageIndex = 5;
+            this.barButtonItem3.ImageOptions.LargeImageIndex = 3;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick_1);
             // 
             // barButtonItem4
             // 
             this.barButtonItem4.Caption = "Main Form";
-            this.barButtonItem4.Id = 11;
-            this.barButtonItem4.ImageOptions.LargeImageIndex = 3;
+            this.barButtonItem4.Id = 12;
+            this.barButtonItem4.ImageOptions.LargeImageIndex = 6;
             this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick_1);
+            this.barButtonItem4.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick_2);
             // 
             // imageCollection1
             // 
@@ -156,8 +158,8 @@ namespace CEM
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3, true);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4, true);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3, true);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // documentManager1
@@ -203,9 +205,9 @@ namespace CEM
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }
 

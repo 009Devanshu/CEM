@@ -77,5 +77,12 @@ namespace CEM
         {
            
         }
+
+        private void barButtonItem4_ItemClick_2(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MainForm home = new MainForm();
+            
+            home.Show();
+        }
     }
 }

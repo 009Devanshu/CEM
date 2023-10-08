@@ -376,7 +376,11 @@ namespace CEM
                 }
             }
             Home homeForm = Application.OpenForms["Home"] as Home;
-            homeForm.RefreshDataGridView();
+
+            if (homeForm != null)
+            {
+                homeForm.RefreshDataGridView();
+            }
             this.Close();
         }
 
@@ -624,7 +628,11 @@ namespace CEM
                 MessageBox.Show(ex.Message);
             }
             Home homeForm = Application.OpenForms["Home"] as Home;
-            homeForm.RefreshDataGridView();
+            if (homeForm != null)
+            {
+                homeForm.RefreshDataGridView();
+            }
+         
             this.Close();
         }
 
@@ -1050,8 +1058,8 @@ namespace CEM
                         }
 
                         MessageBox.Show("Employee data deleted successfully");
-                        Home home = new Home();
-                        home.Refresh();
+                        
+                        
                     }
                 }
                 catch (Exception ex)
@@ -1059,7 +1067,11 @@ namespace CEM
                     MessageBox.Show(ex.Message);
                 }
                 Home homeForm = Application.OpenForms["Home"] as Home;
-                homeForm.RefreshDataGridView();
+                if (homeForm != null)
+                {
+                    homeForm.RefreshDataGridView();
+                }
+               
                 this.Close();
             }
 
