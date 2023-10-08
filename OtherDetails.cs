@@ -911,10 +911,16 @@ namespace CEM
 
             string words = "";
 
-            if ((number / 1000000) > 0)
+            if ((number / 10000000) > 0)
             {
-                words += NumberToWords(number / 1000000) + " Million ";
-                number %= 1000000;
+                words += NumberToWords(number / 10000000) + " Crore ";
+                number %= 10000000;
+            }
+
+            if ((number / 100000) > 0)
+            {
+                words += NumberToWords(number / 100000) + " Lakh ";
+                number %= 100000;
             }
 
             if ((number / 1000) > 0)
@@ -932,7 +938,7 @@ namespace CEM
             if (number > 0)
             {
                 if (!string.IsNullOrEmpty(words))
-                    words += "";
+                    words += "and ";
 
                 string[] unitsMap = { "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen" };
                 string[] tensMap = { "Zero", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
@@ -949,6 +955,7 @@ namespace CEM
 
             return words;
         }
+
         public static int GetDays(string month, string year)
         {
             if (month == "January")
