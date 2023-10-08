@@ -619,8 +619,7 @@ namespace CEM
                     }
 
                     MessageBox.Show("Employee data updated successfully");
-                    Home home = new Home();
-                    home.Refresh();
+                    
                 }
             }
             catch (Exception ex)
