@@ -199,6 +199,10 @@
     <Compile Include="CompanyUpdateForm.Designer.cs">
       <DependentUpon>CompanyUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee-Update-Form.cs" />
+    <Compile Include="Employee-Update-Form.Designer.cs">
+      <DependentUpon>Employee-Update-Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +227,10 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="Home2.cs" />
+    <Compile Include="Home2.Designer.cs">
+      <DependentUpon>Home2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Invoice Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +248,10 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm2.cs" />
+    <Compile Include="MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="OtherDetails.cs">
       <SubType>Form</SubType>
@@ -275,6 +287,9 @@
     <EmbeddedResource Include="CompanyUpdateForm.resx">
       <DependentUpon>CompanyUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Employee-Update-Form.resx">
+      <DependentUpon>Employee-Update-Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +302,9 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Home2.resx">
+      <DependentUpon>Home2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Invoice Form.resx">
       <DependentUpon>Invoice Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OtherDetails.resx">
       <DependentUpon>OtherDetails.cs</DependentUpon>
